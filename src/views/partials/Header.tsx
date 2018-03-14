@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 class Header extends React.Component {
     render() {
@@ -16,7 +17,7 @@ class Header extends React.Component {
                     </div>
                 </div>
                 <nav>
-                    <a href="/about" className="about-button">
+                    <a href="/" className="about-button">
                         <div className="cloud-wrapper">
                             <img src={process.env.PUBLIC_URL + '/images/menu-about.svg'}/>
                             <div>О нас</div>
