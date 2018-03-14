@@ -3,9 +3,6 @@
     src: url("./../fonts/PFKidsPro-GradeFive.ttf");
 }
 
-.headerFont {
-   }
-
 body {
     margin: 0;
     padding: 0;
@@ -18,8 +15,12 @@ body > * {
     margin: 0;
 }
 
+section {
+    overflow: auto;
+}
+
 header {
-    background-color: #ACD7B8;
+    background-color: #acd7b9;
     background-image: url("./../images/circle.svg");
     background-repeat: repeat;
     background-position: center;
@@ -94,18 +95,12 @@ nav .charity-button {
     height: 60px;
 }
 
-main {
-    background: #fba9d64d; }
-
 #slider {
     margin: auto;
     width: 700px;
     height: 250px;
     background: #c5cfe0; }
 
-#common-info {
-    display: flex;
-    align-content: center; }
 
 .employee {
     display: flex;
