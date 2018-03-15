@@ -1,4 +1,5 @@
 import * as React from 'react';
+import BasePage from './BasePage';
 
 class ServicesPage extends React.Component<any, any> {
     componentWillMount() {
@@ -7,20 +8,20 @@ class ServicesPage extends React.Component<any, any> {
 
     render() {
         return(
-            <main>
-                { this.props.services.map((s, ind) => {
-                    return(
-                            <div key={ind} className="service">
-                                <img />
-                                <p className="price">Цена:{s.price}</p>
-                                <button>Заказать</button>
-                                <h2>{s.title}</h2>
-                                <p>{s.description}</p>
-                            </div>
-                        );
-                    })
-                }
-            </main>
+            <BasePage>
+                    { this.props.services.map((s, ind) => {
+                        return(
+                                <div key={ind} className="service">
+                                    <img />
+                                    <p className="price">Цена:{s.price}</p>
+                                    <button>Заказать</button>
+                                    <h2>{s.title}</h2>
+                                    <p>{s.description}</p>
+                                </div>
+                            );
+                        })
+                    }
+            </BasePage>
         );
     }
 }

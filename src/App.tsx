@@ -16,7 +16,6 @@ class App extends React.Component {
   render() {
     return (
         <div>
-            <Header/>
             <BrowserRouter>
                 <Switch>
                 <Route
@@ -31,7 +30,6 @@ class App extends React.Component {
                 />
                 </Switch>
             </BrowserRouter>
-            <Footer/>
         </div>
     );
   }

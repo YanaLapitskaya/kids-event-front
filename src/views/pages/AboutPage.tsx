@@ -1,6 +1,8 @@
 import * as React from 'react';
 import EmployeesSiteList from '../components/employees/EmployeesSiteList';
 import ReviewsSiteList from '../components/reviews/ReviewsSiteList';
+import { css } from 'glamor';
+import BasePage from './BasePage';
 
 class AboutPage extends React.Component<any, any> {
     componentWillMount() {
@@ -10,10 +12,10 @@ class AboutPage extends React.Component<any, any> {
 
     render() {
         return (
-            <main>
-                <section style={styles.commonInfo}>
-                    <div id="slider" />
-                    <div style={styles.commonInfoText}>
+            <BasePage>
+                <section {...commonInfoStyles}>
+                    <img src={process.env.PUBLIC_URL + '/images/children-slider.jpg'} alt="children"/>
+                    <div className="intro-text">
                         <h2>KidsEvent</h2>
                         <p>
                             Мы – профессиональная и креативная команда, которая любит нести детям радость и качественно
@@ -28,20 +30,25 @@ class AboutPage extends React.Component<any, any> {
                 </section>
                 <EmployeesSiteList {...this.props}/>
                 <ReviewsSiteList {...this.props}/>
-            </main>
+            </BasePage>
         );
     }
 }
 
-const styles = {
-    commonInfo: {
-        backgroundColor: '#f2e3e8'
+const commonInfoStyles = css({
+    backgroundColor: '#f2e3e8',
+    ' img': {
+        display: 'block',
+        margin: '-25px auto 25px auto',
+        borderRadius: '30%'
     },
-    commonInfoText: {
+    ' .intro-text': {
         display: 'flex',
-        justifyContent: 'center',
-        width: '80vw'
+        justifyContent: 'center'
+    },
+    ' p': {
+        marginLeft: '35px'
     }
-} as React.CSSProperties;
+});
 
 export default AboutPage;
