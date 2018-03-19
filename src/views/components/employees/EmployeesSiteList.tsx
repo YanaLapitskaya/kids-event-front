@@ -7,17 +7,20 @@ class EmployeesSiteList extends React.Component<any, any> {
         return(
             <section {...sectionStyles}>
                 <h3>Наши сотрудники</h3>
-                {this.props.employees.map((empl, ind) => {
-                    return(
-                        <div key={ind} className="employee">
-                            <img alt="employee-photo" src={`${HOST}${empl.photo}`}/>
-                            <div className="employee-text">
-                                <h4>{empl.firstName}</h4>
-                                <p>{empl.description}</p>
+                <div className="wrapper">
+                    {this.props.employees.map((empl, ind) => {
+                        return(
+                            <div key={ind} className="employee">
+                                <img alt="employee-photo" src={`${HOST}${empl.photo}`}/>
+                                <div className="employee-text">
+                                    <h4>{empl.firstName}</h4>
+                                    <h5>{empl.position}</h5>
+                                    <p>{empl.description}</p>
+                                </div>
                             </div>
-                        </div>
-                    );
-                })}
+                        );
+                    })}
+                </div>
             </section>
         );
     }
@@ -25,6 +28,12 @@ class EmployeesSiteList extends React.Component<any, any> {
 
 const sectionStyles = css({
     backgroundColor: '#dac0f0',
+    ' .wrapper': {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center'
+    },
     ' img': {
         width: '200px',
         height: '200px',
@@ -33,7 +42,9 @@ const sectionStyles = css({
     },
     ' .employee': {
         display: 'flex',
-        alignItems: 'center'
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '30%'
     }
 });
 

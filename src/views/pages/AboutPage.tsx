@@ -39,8 +39,7 @@ const commonInfoStyles = css({
     backgroundColor: '#f2e3e8',
     ' img': {
         display: 'block',
-        margin: '-25px auto 25px auto',
-        borderRadius: '30%'
+        margin: '-25px auto 25px auto'
     },
     ' .intro-text': {
         display: 'flex',

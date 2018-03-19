@@ -7,7 +7,7 @@ export function actionFetchReviews() {
         API.get('/api/review/all').then((data: any) => {
             let reviews = data.reviews;
             reviews = reviews.map((r: any) => {
-                return new Review(r.id, r.name, r.text);
+                return new Review(r.id, r.name, r.text, r.photo);
             });
             dispatch({
                 type: REVIEWS_SET,

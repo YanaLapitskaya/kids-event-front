@@ -12,9 +12,16 @@ class Header extends React.Component {
                     <div id="logo">
                         <img src={process.env.PUBLIC_URL + '/images/logo.svg'} alt="logo" height="180px" width="300px"/>
                     </div>
-                    <div className="phone-container">
-                        <p>(+375 29)135-7-999</p>
-                        <button>Заказать звонок 24/7</button>
+                    <div {...socialsStyles}>
+                        <button>
+                            <img src={process.env.PUBLIC_URL + '/images/phone-icon.png'}/>(+375 29)135-7-999
+                        </button>
+                        <a href="https://www.instagram.com">
+                            <i className="fab fa-instagram"/>
+                        </a>
+                        <a href="https://vk.com">
+                            <i className="fab fa-vk"/>
+                        </a>
                     </div>
                 </div>
                 <nav {...navStyles}>
@@ -48,12 +55,57 @@ class Header extends React.Component {
     }
 }
 
+const socialsStyles = css({
+    display: 'flex',
+    '>*': {
+        marginLeft: '10px',
+        ':hover': {
+            opacity: '0.7'
+        },
+        boxSizing: 'border-box',
+        padding: '3px 0px'
+    },
+    ' button': {
+        backgroundColor: '#ff99b5',
+        color: '#fff',
+        fontFamily: '\'El Messiri\', sans-serif',
+        fontSize: '1.3rem',
+        border: 'none',
+        boxShadow: '0px 3px 10px rgba(0,0,0,.25)',
+        borderRadius: '20px',
+        padding: '0px 5px',
+        ' img': {
+            width: '30px',
+            height: '30px',
+            marginRight: '5px'
+        }
+    },
+    ' a': {
+        textAlign: 'center',
+        textDecoration: 'none',
+        borderRadius: '50%',
+        width: '40px',
+        height: '40px',
+        color: 'white',
+        display: 'block',
+        fontSize: '30px'
+    },
+    ' :nth-child(2)': {
+        background: 'radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%)',
+        boxShadow: '0px 3px 10px rgba(0,0,0,.25)',
+    },
+    ' :nth-child(3)': {
+        backgroundColor: '#4a76a8',
+        boxShadow: '0px 3px 10px rgba(0,0,0,.25)',
+    }
+});
+
 const headerStyles = css({
     backgroundColor: '#acd7b9',
     backgroundImage: 'url("./../images/circle.svg")',
     backgroundRepeat: 'repeat',
     backgroundPosition: 'center',
-    fontFamily: 'PFKidsPro, sans-serif !important',
+    fontFamily: 'PFKidsPro, sans-serif',
     '>div': {
         display: 'flex',
         alignItems: 'center',
@@ -66,9 +118,6 @@ const headerStyles = css({
     ' .slogan': {
         fontSize: '35px',
         fontWeight: '900'
-    },
-    ' .phone-container': {
-        fontSize: '25px'
     }
 });
 
