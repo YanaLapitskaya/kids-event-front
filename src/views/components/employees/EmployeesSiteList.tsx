@@ -6,12 +6,14 @@ class EmployeesSiteList extends React.Component<any, any> {
     render() {
         return(
             <section {...sectionStyles}>
-                <h3>Наши сотрудники</h3>
+                <img src={process.env.PUBLIC_URL + '/images/employees.png'} alt="employees"/>
                 <div className="wrapper">
-                    {this.props.employees.map((empl, ind) => {
+                    {this.props.employees.slice(0, 4).map((empl, ind) => {
                         return(
                             <div key={ind} className="employee">
-                                <img alt="employee-photo" src={`${HOST}${empl.photo}`}/>
+                                <div className="employee-photo">
+                                    <img alt="employee-photo" src={`${HOST}${empl.photo}`}/>
+                                </div>
                                 <div className="employee-text">
                                     <h4>{empl.firstName}</h4>
                                     <h5>{empl.position}</h5>
@@ -28,17 +30,30 @@ class EmployeesSiteList extends React.Component<any, any> {
 
 const sectionStyles = css({
     backgroundColor: '#dac0f0',
+    height: '100vh',
     ' .wrapper': {
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center'
+        textAlign: 'center',
+        marginTop: '-40px'
     },
-    ' img': {
-        width: '200px',
-        height: '200px',
-        borderRadius: '50%',
-        margin: '0px 45px 25px 0px'
+    ' .employee-photo': {
+        backgroundImage: 'url(images/sun.svg)',
+        width: '300px',
+        height: '300px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        ' img': {
+            width: '200px',
+            height: '200px',
+            borderRadius: '50%',
+            margin: '14px 0px 25px 0px'
+        }
+    },
+    '>img': {
+        marginTop: '-15px',
+        width: '400px'
     },
     ' .employee': {
         display: 'flex',

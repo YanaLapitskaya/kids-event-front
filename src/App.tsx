@@ -1,12 +1,10 @@
 import * as React from 'react';
-import Header from './views/partials/Header';
-import Footer from './views/partials/Footer';
 import AboutPage from './views/pages/AboutPage';
 import { Route, Switch } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import ServicesPage from './views/pages/ServicesPage';
 import { actionFetchReviews } from './redux/actions/ReviewActions';
-import { connect, Provider } from 'react-redux';
+import { connect } from 'react-redux';
 import { actionFetchEmployees } from './redux/actions/EmployeeActions';
 import { AppState } from './redux/AppState';
 import { bindActionCreators } from 'redux';

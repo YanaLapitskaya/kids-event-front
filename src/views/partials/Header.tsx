@@ -7,21 +7,24 @@ class Header extends React.Component {
         return (
             <header {...headerStyles}>
                 <img className="clouds" src={process.env.PUBLIC_URL + '/images/clouds.svg'}/>
+                {/*<img className="left-tree" src={process.env.PUBLIC_URL + '/images/left-tree.svg'}/>*/}
                 <div>
-                    <div className="slogan">Растворяемся в детстве</div>
+                    <img src={process.env.PUBLIC_URL + '/images/slogan.png'} alt="slogan"/>
                     <div id="logo">
-                        <img src={process.env.PUBLIC_URL + '/images/logo.svg'} alt="logo" height="180px" width="300px"/>
+                        <img src={process.env.PUBLIC_URL + '/images/logo.png'} alt="logo" height="180px" width="300px"/>
                     </div>
-                    <div {...socialsStyles}>
+                    <div {...contactsStyles}>
                         <button>
                             <img src={process.env.PUBLIC_URL + '/images/phone-icon.png'}/>(+375 29)135-7-999
                         </button>
-                        <a href="https://www.instagram.com">
-                            <i className="fab fa-instagram"/>
-                        </a>
-                        <a href="https://vk.com">
-                            <i className="fab fa-vk"/>
-                        </a>
+                        <div {...socialsStyles}>
+                            <a className="inst-btn" href="https://www.instagram.com">
+                                <i className="fab fa-instagram"/>
+                            </a>
+                            <a className="vk-btn" href="https://vk.com">
+                                <i className="fab fa-vk"/>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <nav {...navStyles}>
@@ -55,8 +58,8 @@ class Header extends React.Component {
     }
 }
 
-const socialsStyles = css({
-    display: 'flex',
+const contactsStyles = css({
+    marginLeft: '-65px',
     '>*': {
         marginLeft: '10px',
         ':hover': {
@@ -73,13 +76,18 @@ const socialsStyles = css({
         border: 'none',
         boxShadow: '0px 3px 10px rgba(0,0,0,.25)',
         borderRadius: '20px',
-        padding: '0px 5px',
+        padding: '5px 5px',
         ' img': {
             width: '30px',
             height: '30px',
             marginRight: '5px'
         }
-    },
+    }
+});
+
+const socialsStyles = css({
+    display: 'flex',
+    justifyContent: 'center',
     ' a': {
         textAlign: 'center',
         textDecoration: 'none',
@@ -88,31 +96,43 @@ const socialsStyles = css({
         height: '40px',
         color: 'white',
         display: 'block',
-        fontSize: '30px'
+        fontSize: '30px',
+        lineHeight: '53px'
     },
-    ' :nth-child(2)': {
+    ' .inst-btn': {
         background: 'radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%)',
         boxShadow: '0px 3px 10px rgba(0,0,0,.25)',
+        margin: '5px 5px'
     },
-    ' :nth-child(3)': {
+    ' .vk-btn': {
         backgroundColor: '#4a76a8',
         boxShadow: '0px 3px 10px rgba(0,0,0,.25)',
+        margin: '5px 5px'
     }
 });
 
 const headerStyles = css({
     backgroundColor: '#acd7b9',
-    backgroundImage: 'url("./../images/circle.svg")',
+    backgroundImage: 'url("./../images/circle.png")',
     backgroundRepeat: 'repeat',
     backgroundPosition: 'center',
     fontFamily: 'PFKidsPro, sans-serif',
     '>div': {
         display: 'flex',
+        flexColumns: '1fr 1fr 1fr',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundPosition: 'center center'
+        backgroundPosition: 'center center',
+        '>img': {
+            width: '220px',
+            flex: '0 0 230px',
+            margin: '0px -70px 0px 0px',
+        }
     },
     ' .clouds': {
+        position: 'absolute'
+    },
+    ' .left-tree': {
         position: 'absolute'
     },
     ' .slogan': {
