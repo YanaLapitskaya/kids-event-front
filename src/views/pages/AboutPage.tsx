@@ -16,13 +16,10 @@ class AboutPage extends React.Component<any, any> {
                 <section {...commonInfoStyles}>
                     <img src={process.env.PUBLIC_URL + '/images/children-slider.jpg'} alt="children"/>
                     <div className="intro-text">
-                        <h2>KidsEvent</h2>
+                        <img src={process.env.PUBLIC_URL + '/images/kids-event.png'} alt="kids-event"/>
                         <p>
                             Мы – профессиональная и креативная команда, которая любит нести детям радость и качественно
-                            выполнять свою работу. Наш принцип — хорошее настроение всем присутствующим. У нас найдется
-                            все необходимое, чтобы сделать ваше мероприятие по — настоящему интересным, веселым и
-                            незабываемым. Лучшие аниматоры и клоуны Минска, самые яркие костюмы, авторские, оригинальные
-                            игры. Мы знаем, как удивить родителей и порадовать ребят. Каждый сценарий индивидуален и
+                            выполнять свою работу. Каждый сценарий индивидуален и
                             придумывается с учетом возраста, и темы торжества. Мы гарантируем полное соответствие
                             образа к выбранной программе. Сомневаетесь? Проверьте сами.
                         </p>
@@ -37,16 +34,19 @@ class AboutPage extends React.Component<any, any> {
 
 const commonInfoStyles = css({
     backgroundColor: '#f2e3e8',
+    height: '100vh',
+    fontSize: '22px',
+    '>img': {
+        width: '60%',
+        boxShadow: '0px 0px 50px 3px #f7a3ee'
+    },
     ' img': {
         display: 'block',
-        margin: '-25px auto 25px auto'
+        margin: '0px auto 25px auto'
     },
     ' .intro-text': {
         display: 'flex',
         justifyContent: 'center'
-    },
-    ' p': {
-        marginLeft: '35px'
     }
 });
 
