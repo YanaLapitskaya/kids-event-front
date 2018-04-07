@@ -6,7 +6,7 @@ class ReviewsSiteList extends React.Component<any, any> {
     render() {
         return (
             <section {...sectionStyles}>
-                <h3>Отзывы</h3>
+                <img src={process.env.PUBLIC_URL + '/images/reviews.png'} alt="reviews"/>
                 <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
                     <div className="carousel-inner">
                         {this.props.reviews.map((r, ind) => {
@@ -50,16 +50,26 @@ class ReviewsSiteList extends React.Component<any, any> {
 
 const sectionStyles = css({
     backgroundColor: '#c8fffa',
+    height: '100vh',
+    '>img': {
+        width: '260px',
+        marginTop: '-15px',
+    },
+    ' .carousel': {
+        boxShadow: '0px 0px 50px 3px #5ad0c5'
+    },
     ' .carousel-control': {
         color: '#bada55'
     },
     ' .carousel-control-prev-icon': {
-        backgroundImage: 'url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'%23000\' viewBox=\'0 0 8 8\'%3E%3Cpath d=\'M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z\'/%3E%3C/svg%3E")',
-        color: 'black'
+        backgroundImage: 'url(images/slider-left.png)',
+        width: '100px',
+        height: '100px'
     },
     ' .carousel-control-next-icon': {
-        backgroundImage : 'url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'%23000\' viewBox=\'0 0 8 8\'%3E%3Cpath d=\'M1.5 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z\'/%3E%3C/svg%3E")',
-        color: 'black'
+        backgroundImage: 'url(images/slider-right.png)',
+        width: '100px',
+        height: '100px'
     },
     ' .carousel-inner': {
         border: '1px solid transparent',
@@ -78,8 +88,8 @@ const sectionStyles = css({
             alignItems: 'center',
             justifyContent: 'center'
         },
-        ' img': {
-            width: '45%',
+        ' .wrapper img': {
+            width: '50%',
             height: 'auto',
             marginLeft: '30px'
         }
