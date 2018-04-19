@@ -15,6 +15,7 @@ import { AppState } from './redux/AppState';
 import { bindActionCreators } from 'redux';
 import { actionFetchServices } from './redux/actions/ServiceActions';
 import AdminPage from './views/pages/AdminPage';
+import { actionFetchClients, actionEditClient, actionAddClient, actionDeleteClient } from './redux/actions/ClientActions';
 
 class App extends React.Component {
   render() {
@@ -33,7 +34,7 @@ class App extends React.Component {
                         render={() => <ServicesPage {...this.props}/>}
                     />
                     <Route
-                        exact={true}
+                        exact={false}
                         path="/management"
                         render={() => <AdminPage {...this.props}/>}
                     />
@@ -48,7 +49,8 @@ const mapStateToProps = (state: AppState) => {
     return {
         employees: state.employees,
         reviews: state.reviews,
-        services: state.services
+        services: state.services,
+        clients: state.clients
     };
 };
 
@@ -58,8 +60,14 @@ const mapDispatchToProps = (dispatch: any) => {
         editEmployee: bindActionCreators(actionEditEmployee, dispatch),
         addEmployee: bindActionCreators(actionAddEmployee, dispatch),
         deleteEmployee: bindActionCreators(actionDeleteEmployee, dispatch),
+
         fetchReviews: bindActionCreators(actionFetchReviews, dispatch),
-        fetchServices: bindActionCreators(actionFetchServices, dispatch)
+        fetchServices: bindActionCreators(actionFetchServices, dispatch),
+
+        fetchClients: bindActionCreators(actionFetchClients, dispatch),
+        editClient: bindActionCreators(actionEditClient, dispatch),
+        addClient: bindActionCreators(actionAddClient, dispatch),
+        deleteClient: bindActionCreators(actionDeleteClient, dispatch)
     };
 };
 

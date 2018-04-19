@@ -1,10 +1,11 @@
 import { Action, handleActions, ReducerMap } from 'redux-actions';
 import { combineReducers, Reducer } from 'redux';
-import { EMPLOYEE_ADD, EMPLOYEE_DELETE, EMPLOYEE_EDIT, EMPLOYEES_SET, REVIEWS_SET, SERVICES_SET } from './ActionTypes';
+import { EMPLOYEE_ADD, EMPLOYEE_DELETE, EMPLOYEE_EDIT, EMPLOYEES_SET, REVIEWS_SET, SERVICES_SET, CLIENTS_GET, CLIENT_EDIT, CLIENT_ADD, CLIENT_DELETE } from './ActionTypes';
 import Employee from '../models/Employee';
 import { AppState, getInitialState } from './AppState';
 import Review from '../models/Review';
 import Service from '../models/Service';
+import Client from '../models/Client';
 
 type EmployeeState = Employee[];
 type EmployeePayload = Employee;
@@ -23,7 +24,6 @@ const EmployeeReducer = handleActions<EmployeeState, EmployeePayload>({
     [EMPLOYEE_EDIT]: (state: EmployeeState, action: Action<EmployeePayload>): EmployeeState => {
         let nextState = state;
         if (action.payload) {
-            console.log(action.payload);
             let empl = action.payload;
             let id = empl.id;
             nextState = state.map((el) => {
@@ -35,7 +35,7 @@ const EmployeeReducer = handleActions<EmployeeState, EmployeePayload>({
     [EMPLOYEE_DELETE]: (state: EmployeeState, action: Action<number>): EmployeeState => {
         let nextState = state;
         if (action.payload) {
-            nextState = nextState.filter((el) => el.id! === action.payload);
+            nextState = nextState.filter((el) => el.id !== action.payload);
         }
         return nextState;
     }
@@ -59,10 +59,45 @@ const ServicesReducer = handleActions<ServiceState, ServicePayload>({
     }
 } as ReducerMap<ServiceState, ServicePayload>, initialServicesState);
 
+type ClientState = Client[];
+type ClientPayload = Client;
+const initialClientsState = getInitialState().clients;
+const ClientReducer = handleActions<ClientState, ClientPayload>({
+    [CLIENTS_GET]: (state: ClientState, action: Action<ClientPayload[]>): ClientState => {
+        return [...action.payload || []];
+    },
+    [CLIENT_ADD]: (state: ClientState, action: Action<ClientPayload>): ClientState => {
+        let nextState = state;
+        if (action.payload) {
+            nextState = [...state, action.payload];
+        }
+        return nextState;
+    },
+    [CLIENT_EDIT]: (state: ClientState, action: Action<ClientPayload>): ClientState => {
+        let nextState = state;
+        if (action.payload) {
+            let client = action.payload;
+            let id = client.id;
+            nextState = state.map((el) => {
+                return el.id === id ? client : el;
+            });
+        }
+        return nextState;
+    },
+    [CLIENT_DELETE]: (state: ClientState, action: Action<number>): ClientState => {
+        let nextState = state;
+        if (action.payload) {
+            nextState = nextState.filter((cl) => cl.id !== action.payload);
+        }
+        return nextState;
+    }
+} as ReducerMap<ClientState, ClientPayload>, initialClientsState);
+
 const rootReducer: Reducer<AppState> = combineReducers( {
     employees: EmployeeReducer,
     reviews: ReviewsReducer,
-    services: ServicesReducer
+    services: ServicesReducer,
+    clients: ClientReducer
 });
 
 export default rootReducer;

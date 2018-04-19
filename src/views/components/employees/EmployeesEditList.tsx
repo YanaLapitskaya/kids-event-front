@@ -9,6 +9,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import Employee from '../../../models/Employee';
 import TextField from 'material-ui/TextField';
+import SideMenu from '../../partials/SideMenu';
 
 interface EmployeesState {
     open: boolean;
@@ -39,10 +40,11 @@ class EmployeesEditList extends React.Component<any, EmployeesState> {
                 employee: empl,
                 open: true
             });
+        } else {
+            this.setState({
+                open: true
+            });
         }
-        this.setState({
-            open: true
-        });
     }
 
     handleClose = (e) => {
@@ -52,6 +54,8 @@ class EmployeesEditList extends React.Component<any, EmployeesState> {
             } else {
                 this.props.editEmployee(this.state.employee);
             }
+        } else if (e.target.innerText === 'УДАЛИТЬ СОТРУДНИКА') {
+            this.props.deleteEmployee(this.state.employee.id);
         }
 
         this.setState({
@@ -62,6 +66,14 @@ class EmployeesEditList extends React.Component<any, EmployeesState> {
 
     render() {
         const actions = [
+            (
+                <FlatButton
+                    label="Удалить сотрудника"
+                    key="delete"
+                    primary={true}
+                    onClick={(e) => this.handleClose(e)}
+                />
+            ),
             (
                 <FlatButton
                     label="Отмена"
@@ -80,53 +92,57 @@ class EmployeesEditList extends React.Component<any, EmployeesState> {
             )
         ];
         return(
-            <section>
-                <div>
-                    <List>
-                        {this.props.employees.map((empl, ind) => {
-                            return(
-                                <div key={ind}>
-                                    <ListItem
-                                        primaryText={`${empl.firstName} ${empl.lastName}`}
-                                        leftAvatar={<Avatar src={`${HOST}${empl.photo}`} />}
-                                        onClick={() => this.handleOpen(empl)}
-                                    />
-                                </div>
-                            );
-                        })}
-                    </List>
-                    <FloatingActionButton secondary={true} onClick={() => this.handleOpen()}>
-                        <ContentAdd />
-                    </FloatingActionButton>
-                    <Dialog
-                        /*title="Dialog With Actions"*/
-                        actions={actions}
-                        modal={true}
-                        open={this.state.open}
-                    >
-                        <div>
-                            <TextField floatingLabelText="Имя"
-                                       defaultValue={this.state.employee ? this.state.employee.firstName : ''}
-                                       id="firstName" onChange={(e, v) => this.handleChange(e, v)}/><br />
-                            <TextField floatingLabelText="Фамилия"
-                                       defaultValue={this.state.employee ? this.state.employee.lastName : ''}
-                                       id="lastName" onChange={(e, v) => this.handleChange(e, v)}/><br />
-                            <TextField floatingLabelText="Должность"
-                                       defaultValue={this.state.employee ? this.state.employee.position : ''}
-                                       id="position" onChange={(e, v) => this.handleChange(e, v)}/><br />
-                            <TextField floatingLabelText="Телефон"
-                                       defaultValue={this.state.employee ? this.state.employee.phone : ''}
-                                       id="phone" onChange={(e, v) => this.handleChange(e, v)}/><br />
-                            <TextField floatingLabelText="Email"
-                                       defaultValue={this.state.employee ? this.state.employee.email : ''}
-                                       id="email" onChange={(e, v) => this.handleChange(e, v)}/><br />
-                            <TextField floatingLabelText="About employee"
-                                       defaultValue={this.state.employee ? this.state.employee.description : ''}
-                                       id="description" onChange={(e, v) => this.handleChange(e, v)}/><br />
-                        </div>
-                    </Dialog>
-                </div>
-            </section>
+            <div>
+                <SideMenu />
+                <section>
+                    <div>
+                        <List>
+                            {this.props.employees.map((empl, ind) => {
+                                return(
+                                    <div key={ind}>
+                                        <ListItem
+                                            primaryText={`${empl.firstName} ${empl.lastName}`}
+                                            leftAvatar={<Avatar src={`${HOST}${empl.photo}`} />}
+                                            onClick={() => this.handleOpen(empl)}
+                                        />
+                                    </div>
+                                );
+                            })}
+                        </List>
+                        <FloatingActionButton secondary={true} onClick={() => this.handleOpen()}>
+                            <ContentAdd />
+                        </FloatingActionButton>
+
+                        <Dialog
+                            /*title="Dialog With Actions"*/
+                            actions={actions}
+                            modal={true}
+                            open={this.state.open}
+                        >
+                            <div>
+                                <TextField floatingLabelText="Имя"
+                                        defaultValue={this.state.employee.firstName}
+                                        id="firstName" onChange={(e, v) => this.handleChange(e, v)}/><br />
+                                <TextField floatingLabelText="Фамилия"
+                                        defaultValue={this.state.employee.lastName}
+                                        id="lastName" onChange={(e, v) => this.handleChange(e, v)}/><br />
+                                <TextField floatingLabelText="Должность"
+                                        defaultValue={this.state.employee.position}
+                                        id="position" onChange={(e, v) => this.handleChange(e, v)}/><br />
+                                <TextField floatingLabelText="Телефон"
+                                        defaultValue={this.state.employee.phone}
+                                        id="phone" onChange={(e, v) => this.handleChange(e, v)}/><br />
+                                <TextField floatingLabelText="Email"
+                                        defaultValue={this.state.employee.email}
+                                        id="email" onChange={(e, v) => this.handleChange(e, v)}/><br />
+                                <TextField floatingLabelText="About employee"
+                                        defaultValue={this.state.employee.description}
+                                        id="description" onChange={(e, v) => this.handleChange(e, v)}/><br />
+                            </div>
+                        </Dialog>
+                    </div>
+                </section>
+            </div>
         );
     }
 }

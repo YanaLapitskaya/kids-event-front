@@ -16,13 +16,17 @@ class SideMenu extends React.Component {
     render() {
         return(
             <Paper {...paper}>
-                <Menu>
+                <Menu disableAutoFocus={true}>
                     <MenuItem
-                        containerElement={<Link to="/profile" />}
+                        containerElement={<Link to="/management/clients" />}
                         primaryText="Клиенты"
                         leftIcon={<Contacts />}
                     />
-                    <MenuItem primaryText="Сотрудники" leftIcon={<People />} />
+                    <MenuItem 
+                        containerElement={<Link to="/management/employees" />}
+                        primaryText="Сотрудники" 
+                        leftIcon={<People />} 
+                    />
                     <MenuItem primaryText="Заказы" leftIcon={<RingVolume />} />
                     <MenuItem primaryText="Программы" leftIcon={<TagFaces />} />
                     <MenuItem primaryText="Календарь" leftIcon={<InsertInvitation />} />
