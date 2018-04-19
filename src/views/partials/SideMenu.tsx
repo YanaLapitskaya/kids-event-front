@@ -27,7 +27,11 @@ class SideMenu extends React.Component {
                         primaryText="Сотрудники" 
                         leftIcon={<People />} 
                     />
-                    <MenuItem primaryText="Заказы" leftIcon={<RingVolume />} />
+                    <MenuItem 
+                        containerElement={<Link to="/management/orders" />}
+                        primaryText="Заказы" 
+                        leftIcon={<RingVolume />} 
+                    />
                     <MenuItem primaryText="Программы" leftIcon={<TagFaces />} />
                     <MenuItem primaryText="Календарь" leftIcon={<InsertInvitation />} />
                     <Divider />
