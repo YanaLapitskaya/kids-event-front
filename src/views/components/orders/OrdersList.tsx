@@ -4,6 +4,11 @@ import { css } from 'glamor';
 import SideMenu from '../../partials/SideMenu';
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import Order from '../../../models/Order';
+import IconButton from 'material-ui/IconButton';
+import NavigationCheck from 'material-ui/svg-icons/navigation/check';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import OrderCard from './OrderCard';
 
 class OrdersList extends React.Component<any, any> {
     componentWillMount() {
@@ -15,27 +20,11 @@ class OrdersList extends React.Component<any, any> {
             <div>
                 <SideMenu/>
                 <div>
-                    {this.props.orders.map((order, ind) => {
-                        return(
-                            <Card key={ind}>
-                                <CardHeader
-                                title="Without Avatar"
-                                subtitle="Subtitle"
-                                actAsExpander={true}
-                                showExpandableButton={true}
-                                />
-                                <CardActions>
-                                <FlatButton label="Action1" />
-                                <FlatButton label="Action2" />
-                                </CardActions>
-                                <CardText expandable={true}>
-                                    {order.date}
-                                    {order.comments}
-                                    {order.price}
-                                </CardText>
-                            </Card>
-                        );
-                    })}
+                    { 
+                        this.props.orders.map((order: Order, ind: number) => {
+                             return <OrderCard editOrder={this.props.editOrder} orders={this.props.orders} order={order} key={ind} />;
+                        })
+                    }
                 </div>
             </div>
         );

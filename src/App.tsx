@@ -16,7 +16,7 @@ import { bindActionCreators } from 'redux';
 import { actionFetchServices } from './redux/actions/ServiceActions';
 import AdminPage from './views/pages/AdminPage';
 import { actionFetchClients, actionEditClient, actionAddClient, actionDeleteClient } from './redux/actions/ClientActions';
-import { actionFetchOrders } from './redux/actions/OrderActions';
+import { actionFetchOrders, actionEditOrder } from './redux/actions/OrderActions';
 
 class App extends React.Component {
   render() {
@@ -71,7 +71,8 @@ const mapDispatchToProps = (dispatch: any) => {
         addClient: bindActionCreators(actionAddClient, dispatch),
         deleteClient: bindActionCreators(actionDeleteClient, dispatch),
 
-        fetchOrders: bindActionCreators(actionFetchOrders, dispatch)
+        fetchOrders: bindActionCreators(actionFetchOrders, dispatch),
+        editOrder: bindActionCreators(actionEditOrder, dispatch)
     };
 };
 

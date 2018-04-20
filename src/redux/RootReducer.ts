@@ -1,6 +1,6 @@
 import { Action, handleActions, ReducerMap } from 'redux-actions';
 import { combineReducers, Reducer } from 'redux';
-import { EMPLOYEE_ADD, EMPLOYEE_DELETE, EMPLOYEE_EDIT, EMPLOYEES_SET, REVIEWS_SET, SERVICES_SET, CLIENTS_GET, CLIENT_EDIT, CLIENT_ADD, CLIENT_DELETE, ORDERS_GET } from './ActionTypes';
+import { EMPLOYEE_ADD, EMPLOYEE_DELETE, EMPLOYEE_EDIT, EMPLOYEES_SET, REVIEWS_SET, SERVICES_SET, CLIENTS_GET, CLIENT_EDIT, CLIENT_ADD, CLIENT_DELETE, ORDERS_GET, ORDER_EDIT } from './ActionTypes';
 import Employee from '../models/Employee';
 import { AppState, getInitialState } from './AppState';
 import Review from '../models/Review';
@@ -100,7 +100,18 @@ const initialOrdersState = getInitialState().orders;
 const OrdersReducer = handleActions<OrderState, OrderPayload>({
     [ORDERS_GET]: (state: OrderState, action: Action<OrderPayload[]>): OrderState => {
         return [...action.payload || []];
-    }
+    },
+    [ORDER_EDIT]: (state: OrderState, action: Action<OrderPayload>): OrderState => {
+        let nextState = state;
+        if (action.payload) {
+            let order = action.payload;
+            let id = order.id;
+            nextState = state.map((ord) => {
+                return ord.id === id ? order : ord;
+            });
+        }
+        return nextState;
+    },
 } as ReducerMap<OrderState, OrderPayload>, initialOrdersState);
 
 const rootReducer: Reducer<AppState> = combineReducers( {

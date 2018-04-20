@@ -13,3 +13,4 @@ export const CLIENT_DELETE = 'CLIENT_DELETE';
 export const CLIENT_ADD = 'CLIENT_ADD';
 
 export const ORDERS_GET = 'ORDERS_GET';
+export const ORDER_EDIT = 'ORDER_EDIT';
