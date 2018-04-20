@@ -13,7 +13,7 @@ import {
 } from './redux/actions/EmployeeActions';
 import { AppState } from './redux/AppState';
 import { bindActionCreators } from 'redux';
-import { actionFetchServices } from './redux/actions/ServiceActions';
+import { actionFetchServices, actionEditService, actionAddService, actionDeleteService } from './redux/actions/ServiceActions';
 import AdminPage from './views/pages/AdminPage';
 import { actionFetchClients, actionEditClient, actionAddClient, actionDeleteClient } from './redux/actions/ClientActions';
 import { actionFetchOrders, actionEditOrder } from './redux/actions/OrderActions';
@@ -64,7 +64,11 @@ const mapDispatchToProps = (dispatch: any) => {
         deleteEmployee: bindActionCreators(actionDeleteEmployee, dispatch),
 
         fetchReviews: bindActionCreators(actionFetchReviews, dispatch),
+
         fetchServices: bindActionCreators(actionFetchServices, dispatch),
+        editService: bindActionCreators(actionEditService, dispatch),
+        addService: bindActionCreators(actionAddService, dispatch),
+        deleteService: bindActionCreators(actionDeleteService, dispatch),
 
         fetchClients: bindActionCreators(actionFetchClients, dispatch),
         editClient: bindActionCreators(actionEditClient, dispatch),

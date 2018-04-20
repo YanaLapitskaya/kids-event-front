@@ -6,6 +6,9 @@ export const EMPLOYEE_ADD = 'EMPLOYEE_ADD';
 export const REVIEWS_SET = 'REVIEWS_SET';
 
 export const SERVICES_SET = 'SERVICES_SET';
+export const SERVICE_EDIT = 'SERVICE_EDIT';
+export const SERVICE_DELETE = 'SERVICE_DELETE';
+export const SERVICE_ADD = 'SERVICE_ADD';
 
 export const CLIENTS_GET = 'CLIENTS_GET';
 export const CLIENT_EDIT = 'CLIENT_EDIT';

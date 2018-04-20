@@ -32,7 +32,11 @@ class SideMenu extends React.Component {
                         primaryText="Заказы" 
                         leftIcon={<RingVolume />} 
                     />
-                    <MenuItem primaryText="Программы" leftIcon={<TagFaces />} />
+                    <MenuItem 
+                        containerElement={<Link to="/management/services" />}
+                        primaryText="Услуги" 
+                        leftIcon={<TagFaces />} 
+                    />
                     <MenuItem primaryText="Календарь" leftIcon={<InsertInvitation />} />
                     <Divider />
                     <MenuItem

@@ -5,7 +5,7 @@ export default class Service {
     description: string;
     price: number;
 
-    constructor(id: number, photos: Array<string>, title: string, description: string, price: number) {
+    constructor(id: number = null, photos: Array<string> = [], title: string = '', description: string = '', price: number = null) {
         this.id = id;
         this.photos = photos;
         this.title = title;

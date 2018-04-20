@@ -44,7 +44,6 @@ export function actionDeleteClient(id: number) {
         API.delete(`/api/client/${id}`)
             .then((res: any) => {
                 if (res.status < 400) {
-                    console.log(id);
                     dispatch({
                         type: CLIENT_DELETE,
                         payload: id
