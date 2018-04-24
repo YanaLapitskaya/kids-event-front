@@ -18,15 +18,13 @@ interface EmployeesState {
 }
 
 class EmployeesEditList extends React.Component<any, EmployeesState> {
-    constructor(props) {
-        super(props);
-        this.setState({
-            open: false,
-            employee: new Employee(0, '', '', '', null, '', '', ''),
-            file: undefined
-        });
-        this.image = React.createRef
-    }
+    state = {
+        open: false,
+        employee: new Employee(),
+        file: undefined
+    };
+
+    image: HTMLInputElement = undefined;    
 
     componentWillMount() {
         this.props.fetchEmployees();
@@ -56,9 +54,9 @@ class EmployeesEditList extends React.Component<any, EmployeesState> {
     handleClose = (e) => {
         if (e.target.innerText === 'СОХРАНИТЬ') {
             if (!this.state.employee.id) {
-                this.props.addEmployee(this.state.employee);
+                this.props.addEmployee(this.state.employee, this.state.file);
             } else {
-                this.props.editEmployee(this.state.employee);
+                this.props.editEmployee(this.state.employee, this.state.file);
             }
         } else if (e.target.innerText === 'УДАЛИТЬ СОТРУДНИКА') {
             this.props.deleteEmployee(this.state.employee.id);
@@ -66,12 +64,9 @@ class EmployeesEditList extends React.Component<any, EmployeesState> {
 
         this.setState({
             open: false,
-            employee: new Employee(0, '', '', '', null, '', '', '')
+            employee: new Employee(),
+            file: undefined
         });
-    }
-
-    handleAddPhoto() {
-        console.log('handle handle');
     }
 
     handleHoverPhoto(e: any) {
@@ -93,15 +88,13 @@ class EmployeesEditList extends React.Component<any, EmployeesState> {
             });
             let reader = new FileReader();
 
-            reader.onload = (e) => {
-                // this.refs.image.src =  e.target.result;
-                console.log(this.refs.image, e.target);
+            reader.onload = () => {
+                this.image.src =  reader.result;
             };
-
             reader.readAsDataURL(files[0]);
         }
     }
-
+    
     render() {
         const actions = [
             (
@@ -164,14 +157,11 @@ class EmployeesEditList extends React.Component<any, EmployeesState> {
                                     <div
                                         onMouseLeave={(e) => this.handleLeavePhoto(e)}
                                         onMouseEnter={(e) => this.handleHoverPhoto(e)}
-                                        onClick={() => this.handleAddPhoto()}
                                     >
-                                        { this.state.employee.photo ?
-                                            <img {...photo}
-                                                 src={`${HOST}${this.state.employee.photo}`}
-                                                 ref={this.image}
-                                            />
-                                            : null }
+                                        <img {...photo}
+                                            src={`${HOST}${this.state.employee.photo}`}
+                                            ref={(node: any) => { this.image = node; }}
+                                        />
                                         <div {...photoArea} className={this.state.employee.photo ? 'hidden' : 'shown'}>
                                              Выберите фотографию<br/>
                                              <img {...addPhotoIcon} src={process.env.PUBLIC_URL + '/images/add-photo.svg'} />

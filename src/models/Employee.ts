@@ -8,8 +8,8 @@ export default class Employee {
     position: string;
     photo: string;
 
-    constructor(id: number, firstName: string, lastName: string, description: string,
-                phone: number, email: string, position: string, photo: string) {
+    constructor(id: number = 0, firstName: string = '', lastName: string = '', description: string = '',
+                phone: number = null, email: string = '', position: string = '', photo: string = '') {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

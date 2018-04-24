@@ -6,7 +6,7 @@ export default class API {
     static get(path: String): Promise<{}> {
         const fetchPromise = new Promise((resolve, reject) => {
             //noinspection TypeScriptUnresolvedFunction
-            return fetch(`${HOST}${path}`, { method: 'get', credentials: 'include'})
+            return fetch(`${HOST}${path}`, { method: 'get'})
                         .then(res => {
                             if (res.status < 400) {
                                 return res.json();
@@ -39,7 +39,6 @@ export default class API {
     static delete(path: string ): Promise<{}> {
         return fetch(`${HOST}${path}`, {
             method: 'delete',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             }
@@ -51,7 +50,6 @@ export default class API {
 function putOrPost(method: string, path: string, payload: Object): Promise<{}> {
     return fetch(`${HOST}${path}`, {
         method,
-        credentials: 'include',
         headers: {
             'Content-Type': 'application/json',
         },

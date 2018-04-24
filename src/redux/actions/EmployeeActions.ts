@@ -1,6 +1,7 @@
 import API from '../../API';
 import Employee from '../../models/Employee';
 import { EMPLOYEE_ADD, EMPLOYEE_DELETE, EMPLOYEE_EDIT, EMPLOYEES_SET } from '../ActionTypes';
+import { HOST } from '../../Constants';
 
 export function actionFetchEmployees() {
     return (dispatch: any) => {
@@ -18,50 +19,44 @@ export function actionFetchEmployees() {
     };
 }
 
-export function actionEditEmployee(editedEmployee: Employee) {
+export function actionEditEmployee(editedEmployee: Employee, file?: File) {
     return (dispatch: any) => {
         if (!editedEmployee) { return; }
 
-        /*let formData = new FormData();
-        formData.append('firstName', editedEmployee.firstName);
-        formData.append('lastName', editedEmployee.lastName);
-        formData.append('position', editedEmployee.position);
-        formData.append('email', editedEmployee.email);
+        let formData = new FormData();
+        formData.append('first_name', editedEmployee.firstName);
+        formData.append('last_name', editedEmployee.lastName);
+        formData.append('description', editedEmployee.description);
         if (editedEmployee.phone) {
             formData.append('phone', editedEmployee.phone.toString());
         }
-        formData.append('description', editedEmployee.description);*/
+        formData.append('email', editedEmployee.email);
+        formData.append('position', editedEmployee.position);
+        formData.append('photo', editedEmployee.photo);
+        if (file) {
+            formData.append('file', file);
+        } 
 
-        let emplData = {
-            first_name: editedEmployee.firstName,
-            last_name: editedEmployee.lastName,
-            position: editedEmployee.position,
-            email: editedEmployee.email,
-            phone: editedEmployee.phone,
-            description: editedEmployee.description
-        };
-
-     /*   fetch(`${HOST}/api/employee/${editedEmployee.id}`, {
+        fetch(`${HOST}/api/employee/${editedEmployee.id}`, {
             method: 'POST',
-            credentials: 'include',
             headers: {
-                'Accept': 'application/json, *!/!*'
+                'Accept': 'application/json, */*'
             },
-            body: data
-        })*/
-        API.post(`/api/employee/${editedEmployee.id}`, emplData)
+            body: formData
+        }) 
             .then((res: any) => {
                 if (res.status < 400) {
-                    let emp = editedEmployee;
-                    emp = new Employee(emp.id, emp.firstName, emp.lastName, emp.description, emp.phone,
-                        emp.email, emp.position, emp.photo);
-                    dispatch({
-                        type: EMPLOYEE_EDIT,
-                        payload: emp
-                    });
+                    return res.json();
                 } else {
                     throw {code: res.status.toString()};
                 }
+            })
+            .then((data) => {
+                    editedEmployee.photo = data.photo;
+                    dispatch({
+                        type: EMPLOYEE_EDIT,
+                        payload: editedEmployee
+                    });
             })
             .catch((err: any) => {
                 throw new Error(JSON.stringify(err.message || err));
@@ -88,18 +83,29 @@ export function actionDeleteEmployee(id: number) {
     };
 }
 
-export function actionAddEmployee(newEmployee: Employee) {
+export function actionAddEmployee(newEmployee: Employee, file?: File) {
     return (dispatch) => {
-        let reqEmployee = {
-            first_name: newEmployee.firstName,
-            last_name: newEmployee.lastName,
-            description: newEmployee.description,
-            phone: newEmployee.phone,
-            email: newEmployee.email,
-            position: newEmployee.position,
-            photo: newEmployee.photo
-        };
-        API.put('/api/employee', reqEmployee)
+        let formData = new FormData();
+        formData.append('first_name', newEmployee.firstName);
+        formData.append('last_name', newEmployee.lastName);
+        formData.append('description', newEmployee.description);
+        if (newEmployee.phone) {
+            formData.append('phone', newEmployee.phone.toString());
+        }
+        formData.append('email', newEmployee.email);
+        formData.append('position', newEmployee.position);
+        formData.append('photo', newEmployee.photo);
+        if (file) {
+            formData.append('file', file);
+        } 
+
+        fetch(`${HOST}/api/employee`, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json, */*'
+            },
+            body: formData
+        }) 
             .then((res: any) => {
                 if (res.status < 400) {
                     return res.json();
