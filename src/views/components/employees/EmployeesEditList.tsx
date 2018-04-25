@@ -10,6 +10,7 @@ import Employee from '../../../models/Employee';
 import TextField from 'material-ui/TextField';
 import SideMenu from '../../partials/SideMenu';
 import { css } from 'glamor';
+import Divider from 'material-ui/Divider';
 
 interface EmployeesState {
     open: boolean;
@@ -89,12 +90,17 @@ class EmployeesEditList extends React.Component<any, EmployeesState> {
             let reader = new FileReader();
 
             reader.onload = () => {
+                this.image.style.display = 'block';
                 this.image.src =  reader.result;
             };
             reader.readAsDataURL(files[0]);
         }
     }
     
+    handleImageError() { 
+        this.image.style.display = 'none';
+    }
+
     render() {
         const actions = [
             (
@@ -138,11 +144,12 @@ class EmployeesEditList extends React.Component<any, EmployeesState> {
                                             leftAvatar={<Avatar src={`${HOST}${empl.photo}`} />}
                                             onClick={() => this.handleOpen(empl)}
                                         />
+                                        <Divider />
                                     </div>
                                 );
                             })}
                         </List>
-                        <FloatingActionButton secondary={true} onClick={() => this.handleOpen()}>
+                        <FloatingActionButton style={styles.addEmployeeButton} secondary={true} onClick={() => this.handleOpen()}>
                             <ContentAdd />
                         </FloatingActionButton>
 
@@ -161,8 +168,9 @@ class EmployeesEditList extends React.Component<any, EmployeesState> {
                                         <img {...photo}
                                             src={`${HOST}${this.state.employee.photo}`}
                                             ref={(node: any) => { this.image = node; }}
+                                            onError={() => this.handleImageError()}
                                         />
-                                        <div {...photoArea} className={this.state.employee.photo ? 'hidden' : 'shown'}>
+                                        <div {...photoArea} className={this.state.employee.photo ? 'hidden' : ''}>
                                              Выберите фотографию<br/>
                                              <img {...addPhotoIcon} src={process.env.PUBLIC_URL + '/images/add-photo.svg'} />
                                         </div>
@@ -226,6 +234,11 @@ const styles = {
     addPhotoIcon: {
         color: '#616161',
         margin: '10px'
+    },
+    addEmployeeButton: {
+        position: 'absolute',
+        marginTop: '50px',
+        right: '250px'
     }
 };
 
@@ -243,6 +256,7 @@ const photo = css({
     width: '300px',
     margin: '0px 30px 0px 0px',
     position: 'absolute',
+    zIndex: '1'
 });
 
 const photoArea = css({
@@ -258,11 +272,9 @@ const photoArea = css({
     color: 'black',
     opacity: '0.6',
     fontWidth: '900',
+    zIndex: 2,
     '.hidden': {
-        visibility: 'hidden'
-    },
-    '.shown': {
-        zIndex: 'visible',
+        zIndex: '0'
     }
 });
 
