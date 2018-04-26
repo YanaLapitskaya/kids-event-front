@@ -11,9 +11,17 @@ import TagFaces from 'material-ui/svg-icons/image/tag-faces';
 import InsertInvitation from 'material-ui/svg-icons/editor/insert-invitation';
 import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import { Link } from 'react-router-dom';
+import Badge from 'material-ui/Badge';
 
-class SideMenu extends React.Component {
+class SideMenu extends React.Component<any, any> {
+
+    componentWillMount() {
+        this.props.fetchOrders();
+    }
+
     render() {
+        const notProcessedOrdersCount = this.props.orders.filter(el => el.status === 'не обработан').length;
+        
         return(
             <Paper {...paper}>
                 <Menu disableAutoFocus={true}>
@@ -27,11 +35,19 @@ class SideMenu extends React.Component {
                         primaryText="Сотрудники" 
                         leftIcon={<People />} 
                     />
-                    <MenuItem 
+                    <MenuItem
                         containerElement={<Link to="/management/orders" />}
-                        primaryText="Заказы" 
+                        // primaryText="Заказы" 
                         leftIcon={<RingVolume />} 
-                    />
+                    >
+                        Заказы
+                        <Badge
+                            badgeContent={notProcessedOrdersCount}
+                            primary={true}
+                            badgeStyle={{top: -17, right: -45}}
+                            style={styles.orderBtn}
+                        />
+                    </MenuItem>
                     <MenuItem 
                         containerElement={<Link to="/management/services" />}
                         primaryText="Услуги" 
@@ -55,5 +71,11 @@ const paper = css({
     float: 'left',
     margin: '16px 32px 16px 0'
 });
+
+const styles = {
+    orderBtn: {
+        'padding': '0'
+    }
+};
 
 export default SideMenu;

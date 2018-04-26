@@ -132,7 +132,7 @@ class EmployeesEditList extends React.Component<any, EmployeesState> {
 
         return(
             <div>
-                <SideMenu />
+                <SideMenu {...this.props}/>
                 <section>
                     <div>
                         <List>

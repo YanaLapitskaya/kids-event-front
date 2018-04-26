@@ -14,13 +14,13 @@ class OrdersList extends React.Component<any, any> {
     componentWillMount() {
         this.props.fetchOrders();
     }
-
+    
     render() {
         return(
             <div>
-                <SideMenu/>
+                <SideMenu {...this.props}/>
                 <div>
-                    { 
+                    {
                         this.props.orders.map((order: Order, ind: number) => {
                              return <OrderCard editOrder={this.props.editOrder} orders={this.props.orders} order={order} key={ind} />;
                         })

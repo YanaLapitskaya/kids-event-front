@@ -73,7 +73,7 @@ class ClientsEditList extends React.Component<any, ClientState> {
     render() {
         return (
             <div>
-                <SideMenu/>
+                <SideMenu {...this.props}/>
                 <Table>
                     <TableHeader displaySelectAll={false} >
                         <TableRow>

@@ -90,7 +90,7 @@ class ServicesList extends React.Component<any, ServiceState> {
         ];
         return (
             <div>
-                <SideMenu/>
+                <SideMenu {...this.props}/>
                 <div>
                     { 
                         this.props.services.map((service: Service, ind: number) => {
