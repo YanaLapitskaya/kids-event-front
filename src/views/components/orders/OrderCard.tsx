@@ -128,7 +128,7 @@ class OrderCard extends React.Component<OrderCardProps, OrderCardState> {
 const styles = {
     card: {
         width: '500px',
-        margin: '25px auto'
+        margin: '0px auto'
     },
     smallIcon: {
         width: 36,

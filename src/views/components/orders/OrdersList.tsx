@@ -11,10 +11,6 @@ import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import OrderCard from './OrderCard';
 
 class OrdersList extends React.Component<any, any> {
-    componentWillMount() {
-        this.props.fetchOrders();
-    }
-    
     render() {
         return(
             <div>
