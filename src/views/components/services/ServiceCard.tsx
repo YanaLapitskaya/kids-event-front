@@ -16,17 +16,14 @@ interface ServiceProps {
 
 class ServiceCard extends React.Component<ServiceProps, any> {
     render() {
-        let service = this.props.service;
+        let {title, description, price} = this.props.service;
         return (
-            <Card key={this.props.key} style={styles.card} onClick={() => this.props.handleOpen(service)}>
+            <Card style={styles.card} onClick={() => this.props.handleOpen(this.props.service)}>
+                <p {...priceText}>{price} бел. руб.</p>
                 <CardHeader
-                    title={service.title}
-                    subtitle={service.description}
+                    title={title}
+                    subtitle={description}
                 />
-                <CardActions>Редактировать</CardActions>
-                <CardText>
-                    i can put more details here
-                </CardText>
             </Card>
         );
     }
@@ -35,8 +32,16 @@ class ServiceCard extends React.Component<ServiceProps, any> {
 const styles = {
     card: {
         width: '55%',
-        margin: 'auto'
+        margin: '0px auto 25px auto',
+        position: 'relative'
     }
 };
+
+const priceText = css({
+    position: 'absolute',
+    top: '15px',
+    right: '20px',
+    fontSize: '20px'
+});
 
 export default ServiceCard;

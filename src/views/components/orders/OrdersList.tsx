@@ -11,14 +11,18 @@ import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import OrderCard from './OrderCard';
 
 class OrdersList extends React.Component<any, any> {
+    componentWillMount() {
+        this.props.fetchClients();
+    }
+
     render() {
         return(
             <div>
                 <SideMenu {...this.props}/>
-                <div>
+                <div {...wrapper}>
                     {
                         this.props.orders.map((order: Order, ind: number) => {
-                             return <OrderCard editOrder={this.props.editOrder} orders={this.props.orders} order={order} key={ind} />;
+                             return <OrderCard editOrder={this.props.editOrder} orders={this.props.orders} clients={this.props.clients} order={order} key={ind} />;
                         })
                     }
                 </div>
@@ -26,5 +30,9 @@ class OrdersList extends React.Component<any, any> {
         );
     }
 }
+
+const wrapper = css({
+    paddingTop: '25px'
+});
 
 export default OrdersList;

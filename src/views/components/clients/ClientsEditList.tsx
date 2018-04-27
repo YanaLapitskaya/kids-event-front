@@ -130,7 +130,7 @@ class ClientsEditList extends React.Component<any, ClientState> {
                         })}                      
                     </TableBody>
                 </Table>
-                <FloatingActionButton mini={true} onClick={() => this.handleAdd()}>
+                <FloatingActionButton mini={true} style={{margin: '30px'}} onClick={() => this.handleAdd()}>
                     <ContentAdd />
                 </FloatingActionButton>
             </div>

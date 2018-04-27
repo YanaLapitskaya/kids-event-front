@@ -8,12 +8,14 @@ import Order from '../../../models/Order';
 import IconButton from 'material-ui/IconButton';
 import NavigationCheck from 'material-ui/svg-icons/navigation/check';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import Client from '../../../models/Client';
 
 interface OrderCardProps {
     order: Order;
-    key: number;
     orders: Array<Order>;
+    clients: Array<Client>;
     editOrder: Function;
+    key: number;
 }
 
 interface OrderCardState {
@@ -49,76 +51,63 @@ class OrderCard extends React.Component<OrderCardProps, OrderCardState> {
         });
     }
 
-    showButtons() {
-        this.setState({
-            isButtonsShown: !this.state.isButtonsShown
-        });
+    changeStatus(newStatus: string) {
+        let order = this.props.order;
+        if (order.status === newStatus) {
+            newStatus = OrderStatuses.notProcessed;
+        }
+        order.status = newStatus;
+        this.props.editOrder(order);
     }
 
-    getCheckmark(status: string) {
-        if (status === OrderStatuses.processed) {
+    getCheckmarkApply(status: string) {
+        if (status === OrderStatuses.processed || status === OrderStatuses.notProcessed) {
             return (
                 <IconButton
-                    iconStyle={styles.smallIcon}
+                    iconStyle={styles.applyIcon}
                     style={styles.small}
-                    onClick={() => this.showButtons()}
+                    onClick={() => this.changeStatus(OrderStatuses.processed)}
                 >
                     <NavigationCheck />
                 </IconButton>
             );
-        } else if (status === OrderStatuses.canceled) {
+        } 
+    }
+
+    getCheckmarkReject(status: string) {
+        if (status === OrderStatuses.canceled || status === OrderStatuses.notProcessed) {
             return (
                 <IconButton
-                    iconStyle={styles.smallIcon}
+                    iconStyle={styles.rejectIcon}
                     style={styles.small}
-                    onClick={() => this.showButtons()}
+                    onClick={() => this.changeStatus(OrderStatuses.canceled)}
                 >
                     <NavigationClose />
                 </IconButton>
             );
-        } else {
-            return null;
         }
     }
 
     render() {
-        let services = this.props.order.Services.map(s => s.title).join(', ');
-        let {id, date, comments, status} = this.props.order;
+        let services = this.props.order.Services.map(s => s.title.trim()).join(', ');
+        let {id, dateOrder, dateService, comments, status, client_id} = this.props.order;
+        let client = this.props.clients.find(el => el.id === client_id);
 
         return(            
-            <Card key={this.props.key} style={styles.card}>
-                {this.getCheckmark(status)}
+            <Card style={styles.card}>
+                {this.getCheckmarkApply(status)}
+                {this.getCheckmarkReject(status)}
+                <p {...orderDate}>{new Date(dateOrder).toLocaleString()}</p>
                 <CardHeader
-                    title={`${services}. Дата: ${date}. ${status}`}
-                    subtitle={`${comments} `}
+                    title={`${services.trim()}: ${new Date(dateService).toLocaleString()}`}
+                    subtitle={comments ? comments : null}
                     actAsExpander={true}
-                    showExpandableButton={true}
                 />
-                {(status ===  OrderStatuses.notProcessed || this.state.isButtonsShown) ? 
-                        (
-                            <CardActions>
-                                <IconButton
-                                    iconStyle={styles.smallIcon}
-                                    style={styles.small}
-                                    id={id}
-                                    onClick={(e) => this.handleOrderApproved(e)}
-                                >
-                                    <NavigationCheck />
-                                </IconButton>
-                                <IconButton
-                                    iconStyle={styles.smallIcon}
-                                    style={styles.small}
-                                    id={id}
-                                    onClick={(e) => this.handleOrderReject(e)}
-                                >
-                                    <NavigationClose />
-                                </IconButton>
-                            </CardActions>
-                        ) 
-                    : null
-                }
-                <CardText expandable={true}>
-                    i can put more details here
+                <CardText>
+                    { client ? 
+                        client.name + ', +375' + client.phone
+                        : null 
+                    }
                 </CardText>
             </Card>
         );
@@ -128,17 +117,30 @@ class OrderCard extends React.Component<OrderCardProps, OrderCardState> {
 const styles = {
     card: {
         width: '500px',
-        margin: '0px auto'
-    },
-    smallIcon: {
-        width: 36,
-        height: 36,
+        margin: '0px auto 25px auto',
+        position: 'relative'
     },
     small: {
         width: 72,
         height: 72,
         padding: 16,
+    },
+    applyIcon: {
+        width: 36,
+        height: 36,
+        color: 'green'
+    },
+    rejectIcon: {
+        width: 36,
+        height: 36,
+        color: '#bd1717'
     }
   };
   
+  const orderDate = css({
+    position: 'absolute',
+    top: '25px',
+    right: '20px'
+  });
+
   export default OrderCard;

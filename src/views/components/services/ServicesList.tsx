@@ -7,6 +7,8 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import Dialog from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
+import { css } from 'glamor';
+import { HOST } from '../../../Constants';
 
 interface ServiceState {
     service: Service;
@@ -67,7 +69,8 @@ class ServicesList extends React.Component<any, ServiceState> {
                 <FlatButton
                     label="Удалить услугу"
                     key="delete"
-                    primary={true}
+                    style={styles.deleteButton}
+                    secondary={true}
                     onClick={(e) => this.handleClose(e)}
                 />
             ),
@@ -91,37 +94,73 @@ class ServicesList extends React.Component<any, ServiceState> {
         return (
             <div>
                 <SideMenu {...this.props}/>
-                <div>
+                <div {...wrapper}>
                     { 
                         this.props.services.map((service: Service, ind: number) => {
                              return <ServiceCard services={this.props.services} handleOpen={this.handleOpen} service={service} key={ind} />;
                         })
                     }
                 </div>
-                <FloatingActionButton onClick={() => this.handleOpen()}>
+                <FloatingActionButton style={{margin: '0px 50px'}} onClick={() => this.handleOpen()}>
                     <ContentAdd />
                 </FloatingActionButton>
                 <Dialog
-                    /*title="Dialog With Actions"*/
                     actions={actions}
                     modal={true}
                     open={this.state.open}
                 >
                     <div>
-                        <TextField floatingLabelText="Название"
-                                defaultValue={this.state.service.title}
-                                id="title" onChange={(e, v) => this.handleChange(e, v)}/><br />
-                        <TextField floatingLabelText="Описание"
-                                defaultValue={this.state.service.description}
-                                id="description" onChange={(e, v) => this.handleChange(e, v)}/><br />
-                        <TextField floatingLabelText="Цена"
-                                defaultValue={this.state.service.price}
-                                id="price" onChange={(e, v) => this.handleChange(e, v)}/><br />
+                        <TextField 
+                            floatingLabelText="Название"
+                            style={styles.textField}
+                            defaultValue={this.state.service.title}
+                            id="title" onChange={(e, v) => this.handleChange(e, v)}
+                        /><br />
+                        <TextField
+                            floatingLabelText="Описание"
+                            style={styles.textField}
+                            defaultValue={this.state.service.description}
+                            multiLine={true}
+                            rows={3}
+                            rowsMax={5}
+                            id="description" onChange={(e, v) => this.handleChange(e, v)}
+                        /><br />
+                        <TextField 
+                            floatingLabelText="Цена"
+                            style={styles.textField}
+                            defaultValue={this.state.service.price}
+                            id="price" onChange={(e, v) => this.handleChange(e, v)}
+                        /><br />
+                    </div>
+                    <div>
+                    { 
+                        this.state.service.photos.map((photo: string, key: number) => {
+                             return <img src={`${HOST}${photo}`} {...image} key={key} alt="service-image"/>;
+                        })
+                    }
                     </div>
                 </Dialog>
             </div>
         );
     }
 }
+
+const wrapper = css({
+    paddingTop: '25px'
+});
+
+const image = css({
+    width: '20%' 
+});
+
+const styles = {
+    textField: {
+        width: '50%'
+    },
+    deleteButton: {
+        position: 'absolute',
+        left: '0'
+    },
+};
 
 export default ServicesList;

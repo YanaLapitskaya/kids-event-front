@@ -7,7 +7,7 @@ export function actionFetchOrders() {
         API.get('/api/order/all').then((data: any) => {
             let orders = data.orders;
             orders = orders.map((ord: any) => {
-                return new Order(ord.id, ord.date, ord.price, ord.comments, ord.client_id, ord.Services, ord.status);
+                return new Order(ord.id, ord.dateOrder, ord.dateService, ord.price, ord.comments, ord.client_id, ord.Services, ord.status);
             });
             dispatch({
                 type: ORDERS_GET,
