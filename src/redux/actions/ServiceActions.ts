@@ -1,6 +1,7 @@
 import API from '../../API';
 import Service from '../../models/Service';
 import { SERVICES_SET, SERVICE_EDIT, SERVICE_DELETE, SERVICE_ADD } from '../ActionTypes';
+import { HOST } from '../../Constants';
 
 export function actionFetchServices() {
     return (dispatch: any) => {
@@ -17,11 +18,33 @@ export function actionFetchServices() {
     };
 }
 
-export function actionEditService(editedService: Service) {
+export function actionEditService(editedService: Service, files: Array<File>) {
     return (dispatch: any) => {
         if (!editedService) { return; }
 
-        API.post(`/api/service/${editedService.id}`, editedService)
+        let formData = new FormData();
+        formData.append('title', editedService.title);
+        formData.append('description', editedService.description);
+        if (editedService.photos) {
+            editedService.photos.forEach((photo) => {
+                formData.append('photos[]', photo);
+            });
+        }
+        if (editedService.price) {
+            formData.append('price', editedService.price.toString());
+        }
+        if (files) {
+            files.forEach((file) => {
+                formData.append('files[]', file);
+            });
+        }
+        fetch(`${HOST}/api/service/${editedService.id}`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, */*'
+            },
+            body: formData
+        }) 
             .then((res: any) => {
                 if (res.status < 400) {
                     dispatch({
@@ -57,9 +80,31 @@ export function actionDeleteService(id: number) {
     };
 }
 
-export function actionAddService(newService: Service) {
+export function actionAddService(newService: Service, files: Array<File>) {
     return (dispatch) => {
-        API.put('/api/service', newService)
+        let formData = new FormData();
+        formData.append('title', newService.title);
+        formData.append('description', newService.description);
+        if (newService.photos) {
+            newService.photos.forEach((photo) => {
+                formData.append('photos[]', photo);
+            });
+        }
+        if (newService.price) {
+            formData.append('price', newService.price.toString());
+        }
+        if (files) {
+            files.forEach((file) => {
+                formData.append('files[]', file);
+            });
+        }
+        fetch(`${HOST}/api/service/`, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json, */*'
+            },
+            body: formData
+        }) 
             .then((res: any) => {
                 if (res.status < 400) {
                     return res.json();
