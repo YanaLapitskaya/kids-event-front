@@ -1,6 +1,6 @@
 import API from '../../API';
 import Order from '../../models/Order';
-import { ORDERS_GET, ORDER_EDIT } from '../ActionTypes';
+import { ORDERS_GET, ORDER_EDIT, ORDER_ADD } from '../ActionTypes';
 
 export function actionFetchOrders() {
     return (dispatch: any) => {
@@ -31,6 +31,29 @@ export function actionEditOrder(editedOrder: Order) {
                 } else {
                     throw {code: res.status.toString()};
                 }
+            })
+            .catch((err: any) => {
+                throw new Error(JSON.stringify(err.message || err));
+            });
+    };
+}
+
+export function actionAddOrder(newOrder: Order) {
+    return (dispatch: any) => {
+        API.put('/api/order', newOrder)
+            .then((res: any) => {
+                if (res.status < 400) {
+                    return res.json();
+                } else {
+                    throw {code: res.status.toString()};
+                }
+            })
+            .then((data) => {
+                let order = data.order;
+                dispatch({
+                    type: ORDER_ADD,
+                    payload: order
+                });
             })
             .catch((err: any) => {
                 throw new Error(JSON.stringify(err.message || err));

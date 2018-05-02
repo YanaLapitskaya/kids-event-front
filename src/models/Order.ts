@@ -10,7 +10,7 @@ export default class Order {
     Services: Array<Service>;
     status: string;
 
-    constructor(id: number = null, dateOrder: Date = null, dateService: Date = null, price: string = '', comments: string = '', 
+    constructor(id: number = null, dateOrder: Date = new Date(), dateService: Date = new Date(), price: string = '', comments: string = '', 
             client_id: number = null, Services: Array<Service> = [], status: string = '') {
         this.id = id;
         this.dateOrder = dateOrder;

@@ -60,7 +60,7 @@ export function actionDeleteClient(id: number) {
 
 export function actionAddClient(newClient: Client) {
     return (dispatch) => {
-        API.put('/api/client', newClient)
+        return API.put('/api/client', newClient)
             .then((res: any) => {
                 if (res.status < 400) {
                     return res.json();
