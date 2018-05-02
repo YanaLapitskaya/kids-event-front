@@ -85,7 +85,7 @@ class ServicesPage extends React.Component<any, any> {
         let order = this.state.order;
         order.dateService.setDate(v.getDate());
         order.dateService.setMonth(v.getMonth());
-        order.dateService.setYear(v.getYear());
+        order.dateService.setFullYear(v.getFullYear());
     }
 
     handleTimeChange = (e, v) => {
