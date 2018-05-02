@@ -5,7 +5,7 @@ export default class Client {
     socials: Array<string>;
     notes: string;
 
-    constructor(id: number, name: string, phone: number, socials: Array<string>, notes: string) {
+    constructor(id: number = null, name: string = '', phone: number = null, socials: Array<string> = [], notes: string = '') {
         this.id = id;
         this.name = name;
         this.phone = phone;

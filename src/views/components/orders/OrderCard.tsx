@@ -97,9 +97,9 @@ class OrderCard extends React.Component<OrderCardProps, OrderCardState> {
             <Card style={styles.card}>
                 {this.getCheckmarkApply(status)}
                 {this.getCheckmarkReject(status)}
-                <p {...orderDate}>{new Date(dateOrder).toLocaleString()}</p>
+                <p {...orderDate}>{new Date(dateOrder).toLocaleString('ru-RU', {timeZone: 'Europe/Moscow'})}</p>
                 <CardHeader
-                    title={`${services.trim()}: ${new Date(dateService).toLocaleString()}`}
+                    title={`${services.trim()}: ${new Date(dateService).toLocaleString('ru-RU')}`}
                     subtitle={comments ? comments : null}
                     actAsExpander={true}
                 />
