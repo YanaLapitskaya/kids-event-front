@@ -1,9 +1,6 @@
 import * as React from 'react';
-import { HOST } from '../../../Constants';
 import { css } from 'glamor';
-import SideMenu from '../../partials/SideMenu';
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
 import Order from '../../../models/Order';
 import IconButton from 'material-ui/IconButton';
 import NavigationCheck from 'material-ui/svg-icons/navigation/check';
@@ -92,14 +89,19 @@ class OrderCard extends React.Component<OrderCardProps, OrderCardState> {
         let services = this.props.order.Services.map(s => s.title.trim()).join(', ');
         let {id, dateOrder, dateService, comments, status, client_id} = this.props.order;
         let client = this.props.clients.find(el => el.id === client_id);
+        const timeOffset = 3;
+        dateOrder = new Date(dateOrder);
+        dateOrder.setHours(dateOrder.getHours() + timeOffset);
+        dateService = new Date(dateService);
+        dateService.setHours(dateService.getHours() + timeOffset);
 
         return(            
             <Card style={styles.card}>
                 {this.getCheckmarkApply(status)}
                 {this.getCheckmarkReject(status)}
-                <p {...orderDate}>{new Date(dateOrder).toLocaleString('ru-RU', {timeZone: 'Europe/Moscow'})}</p>
+                <p {...orderDate}>{dateOrder.toLocaleString('ru-RU')}</p>
                 <CardHeader
-                    title={`${services.trim()}: ${new Date(dateService).toLocaleString('ru-RU')}`}
+                    title={`${services.trim()}: ${dateService.toLocaleString('ru-RU').substr(0, 17)}`}
                     subtitle={comments ? comments : null}
                     actAsExpander={true}
                 />
