@@ -52,7 +52,11 @@ class SideMenu extends React.Component<any, any> {
                         primaryText="Услуги" 
                         leftIcon={<TagFaces />} 
                     />
-                    <MenuItem primaryText="Календарь" leftIcon={<InsertInvitation />} />
+                    <MenuItem 
+                        containerElement={<Link to="/management/calendar" />}
+                        primaryText="Календарь" 
+                        leftIcon={<InsertInvitation />} 
+                    />
                     <Divider />
                     <MenuItem
                         containerElement={<Link to="/" />}

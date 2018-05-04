@@ -7,6 +7,7 @@ import ClientsEditList from '../components/clients/ClientsEditList';
 import OrdersList from '../components/orders/OrdersList';
 import AboutPage from './AboutPage';
 import ServicesList from '../components/services/ServicesList';
+import CalendarPage from '../pages/CalendarPage';
 
 class AdminPage extends React.Component<any, any> {
     componentWillMount() {
@@ -38,6 +39,11 @@ class AdminPage extends React.Component<any, any> {
                             exact={true}
                             path="/management/services"
                             render={() => <ServicesList {...this.props}/>}
+                        />
+                        <Route
+                            exact={true}
+                            path="/management/calendar"
+                            render={() => <CalendarPage {...this.props}/>}
                         />
                         <Route
                             exact={false}

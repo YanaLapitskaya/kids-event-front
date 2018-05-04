@@ -17,6 +17,12 @@ import { actionFetchServices, actionEditService, actionAddService, actionDeleteS
 import AdminPage from './views/pages/AdminPage';
 import { actionFetchClients, actionEditClient, actionAddClient, actionDeleteClient } from './redux/actions/ClientActions';
 import { actionFetchOrders, actionEditOrder, actionAddOrder } from './redux/actions/OrderActions';
+import { HOST } from './Constants';
+
+const Login: React.SFC<void> = () => {
+    window.location.replace(`${HOST}/login`);
+    return null;
+};
 
 class App extends React.Component {
   render() {
@@ -34,6 +40,7 @@ class App extends React.Component {
                         path="/services"
                         render={() => <ServicesPage {...this.props}/>}
                     />
+                    <Route path="/login" component={Login}/>
                     <Route
                         exact={false}
                         path="/management"

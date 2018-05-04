@@ -37,6 +37,9 @@ const sectionStyles = css({
         textAlign: 'center',
         marginTop: '-40px'
     },
+    ' .employee-text': {
+        padding: '20px'
+    },
     ' .employee-photo': {
         backgroundImage: 'url(images/sun.svg)',
         width: '300px',
