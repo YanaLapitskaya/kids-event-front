@@ -24,11 +24,13 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 interface ClientState {
     client: Client;
     activeRow: number;
+    socials: string;
 }
 class ClientsEditList extends React.Component<any, ClientState> {
     state = {
         client: new Client(null, '', null, [], ''),
-        activeRow: null
+        activeRow: null,
+        socials: ''
     };
 
     componentWillMount() {
@@ -48,13 +50,27 @@ class ClientsEditList extends React.Component<any, ClientState> {
 
     handleChange = (event, newValue) => {
         let client = this.state.client;
-        client[event.target.id] = newValue;
-        this.setState({
-            client: client
-        });
+        if (event.target.id !== 'socials') {
+            client[event.target.id] = newValue;
+            this.setState({
+                client: client
+            });
+        } else {
+            let social = newValue;
+            this.setState({
+                socials: social
+            });
+        }
     }
 
     handleSave = () => {
+        let socialsArr = this.state.socials.split(',');
+        let editedClient = this.state.client;
+        editedClient.socials = socialsArr;
+        this.setState({
+           client: editedClient,
+           socials: ''
+        });
         this.props.editClient(this.state.client);
         this.setState({
             client: new Client(null, '', null, [], ''),
@@ -66,7 +82,8 @@ class ClientsEditList extends React.Component<any, ClientState> {
         this.props.deleteClient(this.state.client.id);
         this.setState({
             client: new Client(null, '', null, [], ''),
-            activeRow: null
+            activeRow: null,
+            socials: ''
         });
     }
 
@@ -105,7 +122,7 @@ class ClientsEditList extends React.Component<any, ClientState> {
                                                 <TextField onChange={(e, v) => this.handleChange(e, v)} id="phone" defaultValue={cl.phone}/>
                                             </TableRowColumn>
                                             <TableRowColumn>
-                                                <TextField onChange={(e, v) => this.handleChange(e, v)} id="socials" defaultValue={cl.socials}/>
+                                                <TextField onChange={(e, v) => this.handleChange(e, v)} id="socials" defaultValue={cl.socials ? cl.socials.join(',') : ''}/>
                                             </TableRowColumn>
                                             <TableRowColumn>
                                                 <TextField onChange={(e, v) => this.handleChange(e, v)} id="notes" defaultValue={cl.notes}/>
@@ -122,7 +139,7 @@ class ClientsEditList extends React.Component<any, ClientState> {
                                             </TableRowColumn>
                                             <TableRowColumn>{cl.name}</TableRowColumn>
                                             <TableRowColumn>{cl.phone}</TableRowColumn>
-                                            <TableRowColumn>{cl.socials}</TableRowColumn>
+                                            <TableRowColumn>{cl.socials ? cl.socials.join(',') : ''}</TableRowColumn>
                                             <TableRowColumn>{cl.notes}</TableRowColumn>
                                         </TableRow>
                                     )
