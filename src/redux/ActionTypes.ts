@@ -18,3 +18,6 @@ export const CLIENT_ADD = 'CLIENT_ADD';
 export const ORDERS_GET = 'ORDERS_GET';
 export const ORDER_EDIT = 'ORDER_EDIT';
 export const ORDER_ADD = 'ORDER_ADD';
+
+export const USER_LOGIN = 'USER_LOGIN';
+export const USER_LOGOUT = 'USER_LOGOUT';

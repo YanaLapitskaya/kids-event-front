@@ -17,6 +17,8 @@ import { actionFetchServices, actionEditService, actionAddService, actionDeleteS
 import AdminPage from './views/pages/AdminPage';
 import { actionFetchClients, actionEditClient, actionAddClient, actionDeleteClient } from './redux/actions/ClientActions';
 import { actionFetchOrders, actionEditOrder, actionAddOrder } from './redux/actions/OrderActions';
+import LoginPage from './views/pages/LoginPage';
+import { actionLogin } from './redux/actions/UserActions';
 
 class App extends React.Component {
   render() {
@@ -36,6 +38,11 @@ class App extends React.Component {
                     />
                     <Route
                         exact={false}
+                        path="/login"
+                        render={() => <LoginPage {...this.props}/>} 
+                    />
+                    <Route
+                        exact={false}
                         path="/management"
                         render={() => <AdminPage {...this.props}/>}
                     />
@@ -52,7 +59,8 @@ const mapStateToProps = (state: AppState) => {
         reviews: state.reviews,
         services: state.services,
         clients: state.clients,
-        orders: state.orders
+        orders: state.orders,
+        user: state.user
     };
 };
 
@@ -77,7 +85,9 @@ const mapDispatchToProps = (dispatch: any) => {
 
         fetchOrders: bindActionCreators(actionFetchOrders, dispatch),
         editOrder: bindActionCreators(actionEditOrder, dispatch),
-        addOrder: bindActionCreators(actionAddOrder, dispatch)
+        addOrder: bindActionCreators(actionAddOrder, dispatch),
+        
+        login: bindActionCreators(actionLogin, dispatch)
     };
 };
 

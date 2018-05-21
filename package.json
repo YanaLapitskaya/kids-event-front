@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "material-ui": "^0.20.0",
+    "moment-timezone": "^0.5.16",
     "react-scripts-ts": "2.13.0"
   },
   "scripts": {

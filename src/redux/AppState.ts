@@ -10,13 +10,15 @@ export interface AppState {
     services: Array<Service>;
     clients: Array<Client>;
     orders: Array<Order>;
+    user: Object;
 }
 const employees: Array<Employee> = [];
 const reviews: Array<Review> = [];
 const services: Array<Service> = [];
 const clients: Array<Client> = [];
 const orders: Array<Order> = [];
+const user: Object = {};
 
 export const getInitialState = (): AppState => {
-    return {employees, reviews, services, clients, orders};
+    return {employees, reviews, services, clients, orders, user};
 };

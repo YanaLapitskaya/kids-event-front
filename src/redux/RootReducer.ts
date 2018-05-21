@@ -1,6 +1,6 @@
 import { Action, handleActions, ReducerMap } from 'redux-actions';
 import { combineReducers, Reducer } from 'redux';
-import { EMPLOYEE_ADD, EMPLOYEE_DELETE, EMPLOYEE_EDIT, EMPLOYEES_SET, REVIEWS_SET, SERVICES_SET, CLIENTS_GET, CLIENT_EDIT, CLIENT_ADD, CLIENT_DELETE, ORDERS_GET, ORDER_EDIT, SERVICE_ADD, SERVICE_EDIT, SERVICE_DELETE, ORDER_ADD } from './ActionTypes';
+import { EMPLOYEE_ADD, EMPLOYEE_DELETE, EMPLOYEE_EDIT, EMPLOYEES_SET, REVIEWS_SET, SERVICES_SET, CLIENTS_GET, CLIENT_EDIT, CLIENT_ADD, CLIENT_DELETE, ORDERS_GET, ORDER_EDIT, SERVICE_ADD, SERVICE_EDIT, SERVICE_DELETE, ORDER_ADD, USER_LOGIN } from './ActionTypes';
 import Employee from '../models/Employee';
 import { AppState, getInitialState } from './AppState';
 import Review from '../models/Review';
@@ -146,12 +146,22 @@ const OrdersReducer = handleActions<OrderState, OrderPayload>({
     },
 } as ReducerMap<OrderState, OrderPayload>, initialOrdersState);
 
-const rootReducer: Reducer<AppState> = combineReducers( {
+type UserState = Object;
+type UserPayload = Object;
+const initialUserState = getInitialState().user;
+const UserReducer = handleActions<UserState, UserPayload>({
+    [USER_LOGIN]: (state: UserState, action: Action<UserPayload>): UserState => {
+        return action.payload || null;
+    }
+} as ReducerMap<UserState, UserPayload>, initialUserState);
+
+const rootReducer: Reducer<AppState> = combineReducers({
     employees: EmployeeReducer,
     reviews: ReviewsReducer,
     services: ServicesReducer,
     clients: ClientReducer,
-    orders: OrdersReducer
+    orders: OrdersReducer,
+    user: UserReducer
 });
 
 export default rootReducer;
