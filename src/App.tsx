@@ -19,6 +19,12 @@ import { actionFetchClients, actionEditClient, actionAddClient, actionDeleteClie
 import { actionFetchOrders, actionEditOrder, actionAddOrder } from './redux/actions/OrderActions';
 import LoginPage from './views/pages/LoginPage';
 import { actionLogin } from './redux/actions/UserActions';
+import { HOST } from './Constants';
+
+const Login: React.SFC<void> = () => {
+    window.location.replace(`${HOST}/login`);
+    return null;
+};
 
 class App extends React.Component {
   render() {
@@ -36,6 +42,7 @@ class App extends React.Component {
                         path="/services"
                         render={() => <ServicesPage {...this.props}/>}
                     />
+                    <Route path="/login" component={Login}/>
                     <Route
                         exact={false}
                         path="/login"

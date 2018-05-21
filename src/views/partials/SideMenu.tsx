@@ -9,6 +9,7 @@ import RingVolume from 'material-ui/svg-icons/communication/ring-volume';
 import Divider from 'material-ui/Divider';
 import TagFaces from 'material-ui/svg-icons/image/tag-faces';
 import InsertInvitation from 'material-ui/svg-icons/editor/insert-invitation';
+import InsertChart from 'material-ui/svg-icons/editor/insert-chart';
 import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import { Link } from 'react-router-dom';
 import Badge from 'material-ui/Badge';
@@ -52,7 +53,16 @@ class SideMenu extends React.Component<any, any> {
                         primaryText="Услуги" 
                         leftIcon={<TagFaces />} 
                     />
-                    <MenuItem primaryText="Календарь" leftIcon={<InsertInvitation />} />
+                    <MenuItem 
+                        containerElement={<Link to="/management/calendar" />}
+                        primaryText="Календарь" 
+                        leftIcon={<InsertInvitation />} 
+                    />
+                    <MenuItem 
+                        containerElement={<Link to="/management/charts" />}
+                        primaryText="Статистика" 
+                        leftIcon={<InsertChart />} 
+                    />
                     <Divider />
                     <MenuItem
                         containerElement={<Link to="/" />}

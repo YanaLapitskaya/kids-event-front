@@ -119,12 +119,10 @@ class ServicesPage extends React.Component<any, any> {
                                 <div key={ind} className="service">
                                     <img src={HOST + s.photos[0]}/>
                                     <div>
-                                        <p className="price">Цена:{s.price}</p>
-                                        <button onClick={() => this.handleOpen(s)}>Заказать</button>
-                                    </div>
-                                    <div>
                                         <h2>{s.title}</h2>
                                         <p>{s.description}</p>
+                                        <p className="price">Цена: {s.price} бел. руб.</p>
+                                        <RaisedButton onClick={() => this.handleOpen(s)}>Заказать</RaisedButton>
                                     </div>
                                 </div>
                             );
@@ -205,17 +203,16 @@ const styles = css({
         backgroundColor: '#fff',
         margin: '0px auto 10px auto',
         display: 'grid',
-        gridTemplateColumns: '60% 40%',
+        gridTemplateColumns: '35% 65%',
         ' img': {
             width: '100%'
         },
-        ' :nth-child(2)': {
-            justifySelf: 'center',
-            alignSelf: 'center'
+        '> div': {
+            padding: '35px'
         },
-        ' :nth-child(3)': {
-            gridColumn: '1/3',
-            margin: '10px 50px'
+        ' .price': {
+            display: 'inline-block',
+            marginRight: '20px'
         }
     }
 });
