@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "fusioncharts": "^3.12.2",
     "material-ui": "^0.20.0",
+    "react-fusioncharts": "^1.0.5",
     "react-scripts-ts": "2.13.0"
   },
   "scripts": {

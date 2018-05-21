@@ -10,7 +10,7 @@ class CalendarPage extends React.Component<any, any> {
         return (
             <div>
                 <SideMenu {...this.props}/>
-                <iframe {...frame} src="https://calendar.google.com/calendar/embed?src=yanalapitskay%40gmail.com&ctz=Europe%2FMinsk" />
+                <iframe {...frame} src="https://calendar.google.com/calendar/embed?src=ob102af63t2onv4094ugg94qm8%40group.calendar.google.com&ctz=Europe%2FMinsk" />
             </div>
         );
     }
