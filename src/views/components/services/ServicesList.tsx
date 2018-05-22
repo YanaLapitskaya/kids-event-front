@@ -12,6 +12,7 @@ import { HOST } from '../../../Constants';
 import RaisedButton from 'material-ui/RaisedButton';
 import Clear from 'material-ui/svg-icons/content/clear';
 import ReactDOM from 'react-dom';
+import BaseLayout from '../../pages/BaseLayout';
 
 class ServicesList extends React.Component<any, any> {
     state = {
@@ -139,78 +140,79 @@ class ServicesList extends React.Component<any, any> {
             )
         ];
         return (
-            <div>
-                <SideMenu {...this.props}/>
-                <div {...wrapper}>
-                    { 
-                        this.props.services.map((service: Service, ind: number) => {
-                             return <ServiceCard services={this.props.services} handleOpen={this.handleOpen} service={service} key={ind} />;
-                        })
-                    }
-                </div>
-                <FloatingActionButton style={{margin: '0px 50px'}} onClick={() => this.handleOpen()}>
-                    <ContentAdd />
-                </FloatingActionButton>
-                <Dialog
-                    actions={actions}
-                    modal={true}
-                    open={this.state.open}
-                >
-                    <div {...contentWrapper}>
-                        <div {...fromWrapper}>
-                            <TextField 
-                                floatingLabelText="Название"
-                                style={styles.textField}
-                                defaultValue={this.state.service.title}
-                                id="title" onChange={(e, v) => this.handleChange(e, v)}
-                            /><br />
-                            <TextField
-                                floatingLabelText="Описание"
-                                style={styles.textField}
-                                defaultValue={this.state.service.description}
-                                multiLine={true}
-                                rows={3}
-                                rowsMax={5}
-                                id="description" onChange={(e, v) => this.handleChange(e, v)}
-                            /><br />
-                            <TextField 
-                                floatingLabelText="Цена"
-                                style={styles.textField}
-                                defaultValue={this.state.service.price}
-                                id="price" onChange={(e, v) => this.handleChange(e, v)}
-                            /><br />
-                        </div>
-                        <div {...imagesWrapper}>
-                            <div ref={(node: any) => { this.imageContainer = node; }}>
-                                { this.state.service.photos ?
-                                    this.state.service.photos.map((photo: string, key: number) => {
-                                        return (
-                                            <div {...imageWrapper} key={key}>
-                                                <Clear onClick={e => this.handleDeleteImage(e)} style={styles.clearBtn}/>
-                                                <img src={`${HOST}${photo}`} {...image} alt="service-image"/>
-                                            </div>
-                                        );
-                                    }) : null
-                                }
-                                { 
-                                    this.state.images.map((imgSrc: string, key: number) => {
-                                        return (
-                                            <div {...imageWrapper} key={key}>
-                                                <Clear onClick={e => this.handleDeleteImage(e)} style={styles.clearBtn}/>
-                                                <img src={imgSrc} {...image} alt="service-image"/>
-                                            </div>
-                                        );
-                                    })
-                                }
-                            </div>
-                            <RaisedButton primary={true} style={styles.addPhotoBtn}>
-                                Выберите фотографию
-                                <input {...input} id="uploadFile" type="file" onChange={(e) => {this.handleImageAdd(e.target.files); }}/>
-                            </RaisedButton>
-                        </div>
+            <BaseLayout {...this.props}>
+                <div>
+                    <div {...wrapper}>
+                        { 
+                            this.props.services.map((service: Service, ind: number) => {
+                                return <ServiceCard services={this.props.services} handleOpen={this.handleOpen} service={service} key={ind} />;
+                            })
+                        }
                     </div>
-                </Dialog>
-            </div>
+                    <FloatingActionButton style={{margin: '0px 50px'}} onClick={() => this.handleOpen()}>
+                        <ContentAdd />
+                    </FloatingActionButton>
+                    <Dialog
+                        actions={actions}
+                        modal={true}
+                        open={this.state.open}
+                    >
+                        <div {...contentWrapper}>
+                            <div {...fromWrapper}>
+                                <TextField 
+                                    floatingLabelText="Название"
+                                    style={styles.textField}
+                                    defaultValue={this.state.service.title}
+                                    id="title" onChange={(e, v) => this.handleChange(e, v)}
+                                /><br />
+                                <TextField
+                                    floatingLabelText="Описание"
+                                    style={styles.textField}
+                                    defaultValue={this.state.service.description}
+                                    multiLine={true}
+                                    rows={3}
+                                    rowsMax={5}
+                                    id="description" onChange={(e, v) => this.handleChange(e, v)}
+                                /><br />
+                                <TextField 
+                                    floatingLabelText="Цена"
+                                    style={styles.textField}
+                                    defaultValue={this.state.service.price}
+                                    id="price" onChange={(e, v) => this.handleChange(e, v)}
+                                /><br />
+                            </div>
+                            <div {...imagesWrapper}>
+                                <div ref={(node: any) => { this.imageContainer = node; }}>
+                                    { this.state.service.photos ?
+                                        this.state.service.photos.map((photo: string, key: number) => {
+                                            return (
+                                                <div {...imageWrapper} key={key}>
+                                                    <Clear onClick={e => this.handleDeleteImage(e)} style={styles.clearBtn}/>
+                                                    <img src={`${HOST}${photo}`} {...image} alt="service-image"/>
+                                                </div>
+                                            );
+                                        }) : null
+                                    }
+                                    { 
+                                        this.state.images.map((imgSrc: string, key: number) => {
+                                            return (
+                                                <div {...imageWrapper} key={key}>
+                                                    <Clear onClick={e => this.handleDeleteImage(e)} style={styles.clearBtn}/>
+                                                    <img src={imgSrc} {...image} alt="service-image"/>
+                                                </div>
+                                            );
+                                        })
+                                    }
+                                </div>
+                                <RaisedButton primary={true} style={styles.addPhotoBtn}>
+                                    Выберите фотографию
+                                    <input {...input} id="uploadFile" type="file" onChange={(e) => {this.handleImageAdd(e.target.files); }}/>
+                                </RaisedButton>
+                            </div>
+                        </div>
+                    </Dialog>
+                </div>
+            </BaseLayout>
         );
     }
 }

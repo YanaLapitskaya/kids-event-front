@@ -7,6 +7,7 @@
     "material-ui": "^0.20.0",
     "moment-timezone": "^0.5.16",
     "react-fusioncharts": "^1.0.5",
+    "react-google-login": "^3.2.1",
     "react-scripts-ts": "2.13.0"
   },
   "scripts": {

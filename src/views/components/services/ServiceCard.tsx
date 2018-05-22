@@ -32,7 +32,7 @@ class ServiceCard extends React.Component<ServiceProps, any> {
 const styles = {
     card: {
         width: '55%',
-        margin: '0px auto 25px auto',
+        margin: '0px 0px 25px 100px',
         position: 'relative'
     }
 };

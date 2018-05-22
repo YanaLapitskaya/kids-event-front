@@ -20,6 +20,7 @@ import ActionDelete from 'material-ui/svg-icons/action/delete';
 import ActionPanTool from 'material-ui/svg-icons/action/pan-tool';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import BaseLayout from '../../pages/BaseLayout';
   
 interface ClientState {
     client: Client;
@@ -89,68 +90,69 @@ class ClientsEditList extends React.Component<any, ClientState> {
 
     render() {
         return (
-            <div>
-                <SideMenu {...this.props}/>
-                <Table>
-                    <TableHeader displaySelectAll={false} >
-                        <TableRow>
-                            <TableHeaderColumn/>
-                            <TableHeaderColumn>Имя</TableHeaderColumn>
-                            <TableHeaderColumn>Телефон</TableHeaderColumn>
-                            <TableHeaderColumn>Социальные сети</TableHeaderColumn>
-                            <TableHeaderColumn>Примечания</TableHeaderColumn>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody stripedRows={true} displayRowCheckbox={false}>
-                        {this.props.clients.map((cl, ind) => {
-                            return(
-                                this.state.activeRow === ind ?  
-                                    (
-                                        <TableRow key={ind}>
-                                            <TableRowColumn>    
-                                                <IconButton onClick={() => this.handleSave()}>
-                                                    <ActionDone />
-                                                </IconButton>
-                                                <IconButton onClick={() => this.handleDeleting()}>>
-                                                    <ActionDelete />
-                                                </IconButton>                           
-                                            </TableRowColumn>
-                                            <TableRowColumn>
-                                                <TextField onChange={(e, v) => this.handleChange(e, v)} id="name" defaultValue={cl.name}/>
-                                            </TableRowColumn>
-                                            <TableRowColumn>
-                                                <TextField onChange={(e, v) => this.handleChange(e, v)} id="phone" defaultValue={cl.phone}/>
-                                            </TableRowColumn>
-                                            <TableRowColumn>
-                                                <TextField onChange={(e, v) => this.handleChange(e, v)} id="socials" defaultValue={cl.socials ? cl.socials.join(',') : ''}/>
-                                            </TableRowColumn>
-                                            <TableRowColumn>
-                                                <TextField onChange={(e, v) => this.handleChange(e, v)} id="notes" defaultValue={cl.notes}/>
-                                            </TableRowColumn>
-                                        </TableRow>
-                                    )
-                                    :
-                                    (
-                                        <TableRow key={ind}>
-                                            <TableRowColumn>    
-                                                <IconButton onClick={(e) => this.handleEdit(e, ind)}>
-                                                    <ActionPanTool />
-                                                </IconButton>                           
-                                            </TableRowColumn>
-                                            <TableRowColumn>{cl.name}</TableRowColumn>
-                                            <TableRowColumn>{cl.phone}</TableRowColumn>
-                                            <TableRowColumn>{cl.socials ? cl.socials.join(',') : ''}</TableRowColumn>
-                                            <TableRowColumn>{cl.notes}</TableRowColumn>
-                                        </TableRow>
-                                    )
-                            );
-                        })}                      
-                    </TableBody>
-                </Table>
-                <FloatingActionButton mini={true} style={{margin: '30px'}} onClick={() => this.handleAdd()}>
-                    <ContentAdd />
-                </FloatingActionButton>
-            </div>
+            <BaseLayout {...this.props}>
+                <div>
+                    <Table>
+                        <TableHeader displaySelectAll={false} >
+                            <TableRow>
+                                <TableHeaderColumn/>
+                                <TableHeaderColumn>Имя</TableHeaderColumn>
+                                <TableHeaderColumn>Телефон</TableHeaderColumn>
+                                <TableHeaderColumn>Социальные сети</TableHeaderColumn>
+                                <TableHeaderColumn>Примечания</TableHeaderColumn>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody stripedRows={true} displayRowCheckbox={false}>
+                            {this.props.clients.map((cl, ind) => {
+                                return(
+                                    this.state.activeRow === ind ?  
+                                        (
+                                            <TableRow key={ind}>
+                                                <TableRowColumn>    
+                                                    <IconButton onClick={() => this.handleSave()}>
+                                                        <ActionDone />
+                                                    </IconButton>
+                                                    <IconButton onClick={() => this.handleDeleting()}>>
+                                                        <ActionDelete />
+                                                    </IconButton>                           
+                                                </TableRowColumn>
+                                                <TableRowColumn>
+                                                    <TextField onChange={(e, v) => this.handleChange(e, v)} id="name" defaultValue={cl.name}/>
+                                                </TableRowColumn>
+                                                <TableRowColumn>
+                                                    <TextField onChange={(e, v) => this.handleChange(e, v)} id="phone" defaultValue={cl.phone}/>
+                                                </TableRowColumn>
+                                                <TableRowColumn>
+                                                    <TextField onChange={(e, v) => this.handleChange(e, v)} id="socials" defaultValue={cl.socials ? cl.socials.join(',') : ''}/>
+                                                </TableRowColumn>
+                                                <TableRowColumn>
+                                                    <TextField onChange={(e, v) => this.handleChange(e, v)} id="notes" defaultValue={cl.notes}/>
+                                                </TableRowColumn>
+                                            </TableRow>
+                                        )
+                                        :
+                                        (
+                                            <TableRow key={ind}>
+                                                <TableRowColumn>    
+                                                    <IconButton onClick={(e) => this.handleEdit(e, ind)}>
+                                                        <ActionPanTool />
+                                                    </IconButton>                           
+                                                </TableRowColumn>
+                                                <TableRowColumn>{cl.name}</TableRowColumn>
+                                                <TableRowColumn>{cl.phone}</TableRowColumn>
+                                                <TableRowColumn>{cl.socials ? cl.socials.join(',') : ''}</TableRowColumn>
+                                                <TableRowColumn>{cl.notes}</TableRowColumn>
+                                            </TableRow>
+                                        )
+                                );
+                            })}                      
+                        </TableBody>
+                    </Table>
+                    <FloatingActionButton mini={true} style={{margin: '30px'}} onClick={() => this.handleAdd()}>
+                        <ContentAdd />
+                    </FloatingActionButton>
+                </div>
+            </BaseLayout>
         );
     }
 }

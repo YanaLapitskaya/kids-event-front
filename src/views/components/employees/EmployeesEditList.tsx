@@ -11,6 +11,7 @@ import TextField from 'material-ui/TextField';
 import SideMenu from '../../partials/SideMenu';
 import { css } from 'glamor';
 import Divider from 'material-ui/Divider';
+import BaseLayout from '../../pages/BaseLayout';
 
 interface EmployeesState {
     open: boolean;
@@ -131,87 +132,84 @@ class EmployeesEditList extends React.Component<any, EmployeesState> {
         ];
 
         return(
-            <div>
-                <SideMenu {...this.props}/>
-                <section>
-                    <div>
-                        <List>
-                            {this.props.employees.map((empl, ind) => {
-                                return(
-                                    <div key={ind}>
-                                        <ListItem
-                                            primaryText={`${empl.firstName} ${empl.lastName}`}
-                                            leftAvatar={<Avatar src={`${HOST}${empl.photo}`} />}
-                                            onClick={() => this.handleOpen(empl)}
-                                        />
-                                        <Divider />
-                                    </div>
-                                );
-                            })}
-                        </List>
-                        <FloatingActionButton style={styles.addEmployeeButton} secondary={true} onClick={() => this.handleOpen()}>
-                            <ContentAdd />
-                        </FloatingActionButton>
-
-                        <Dialog
-                            actions={actions}
-                            modal={true}
-                            open={this.state.open}
-                            autoScrollBodyContent={true}
-                        >
-                            <div {...grid}>
-                                <label>
-                                    <div
-                                        onMouseLeave={(e) => this.handleLeavePhoto(e)}
-                                        onMouseEnter={(e) => this.handleHoverPhoto(e)}
-                                    >
-                                        <img {...photo}
-                                            src={`${HOST}${this.state.employee.photo}`}
-                                            ref={(node: any) => { this.image = node; }}
-                                            onError={() => this.handleImageError()}
-                                        />
-                                        <div {...photoArea} className={this.state.employee.photo ? 'hidden' : ''}>
-                                             Выберите фотографию<br/>
-                                             <img {...addPhotoIcon} src={process.env.PUBLIC_URL + '/images/add-photo.svg'} />
-                                        </div>
-                                    </div>
-                                    <input {...input} type="file" onChange={(e) => {this.handleImageChange(e.target.files); }}/>
-                                </label>
-                                <div>
-                                    <div className="firstLastName">
-                                        <TextField floatingLabelText="Имя"
-                                                defaultValue={this.state.employee.firstName}
-                                                style={styles.firstName}
-                                                id="firstName" onChange={(e, v) => this.handleChange(e, v)}/><br />
-                                        <TextField floatingLabelText="Фамилия"
-                                                defaultValue={this.state.employee.lastName}
-                                                style={styles.lastName}
-                                                id="lastName" onChange={(e, v) => this.handleChange(e, v)}/><br />
-                                    </div>
-                                    <TextField floatingLabelText="Должность"
-                                            defaultValue={this.state.employee.position}
-                                            style={styles.bigInput}
-                                            id="position" onChange={(e, v) => this.handleChange(e, v)}/><br />
-                                    <TextField floatingLabelText="Телефон"
-                                            defaultValue={this.state.employee.phone}
-                                            style={styles.bigInput}
-                                            id="phone" onChange={(e, v) => this.handleChange(e, v)}/><br />
-                                    <TextField floatingLabelText="Email"
-                                            defaultValue={this.state.employee.email}
-                                            style={styles.bigInput}
-                                            id="email" onChange={(e, v) => this.handleChange(e, v)}/><br />
-                                    <TextField floatingLabelText="About employee"
-                                            defaultValue={this.state.employee.description}
-                                            style={styles.bigInput}
-                                            multiLine={true}
-                                            rows={2}
-                                            id="description" onChange={(e, v) => this.handleChange(e, v)}/><br />
+            <BaseLayout {...this.props}>
+                <div {...sectionStyles}>
+                    <List>
+                        {this.props.employees.map((empl, ind) => {
+                            return(
+                                <div key={ind}>
+                                    <ListItem
+                                        primaryText={`${empl.firstName} ${empl.lastName}`}
+                                        leftAvatar={<Avatar src={`${HOST}${empl.photo}`} />}
+                                        onClick={() => this.handleOpen(empl)}
+                                    />
+                                    <Divider />
                                 </div>
+                            );
+                        })}
+                    </List>
+                    <FloatingActionButton style={styles.addEmployeeButton} secondary={true} onClick={() => this.handleOpen()}>
+                        <ContentAdd />
+                    </FloatingActionButton>
+
+                    <Dialog
+                        actions={actions}
+                        modal={true}
+                        open={this.state.open}
+                        autoScrollBodyContent={true}
+                    >
+                        <div {...grid}>
+                            <label>
+                                <div
+                                    onMouseLeave={(e) => this.handleLeavePhoto(e)}
+                                    onMouseEnter={(e) => this.handleHoverPhoto(e)}
+                                >
+                                    <img {...photo}
+                                        src={`${HOST}${this.state.employee.photo}`}
+                                        ref={(node: any) => { this.image = node; }}
+                                        onError={() => this.handleImageError()}
+                                    />
+                                    <div {...photoArea} className={this.state.employee.photo ? 'hidden' : ''}>
+                                            Выберите фотографию<br/>
+                                            <img {...addPhotoIcon} src={process.env.PUBLIC_URL + '/images/add-photo.svg'} />
+                                    </div>
+                                </div>
+                                <input {...input} type="file" onChange={(e) => {this.handleImageChange(e.target.files); }}/>
+                            </label>
+                            <div>
+                                <div className="firstLastName">
+                                    <TextField floatingLabelText="Имя"
+                                            defaultValue={this.state.employee.firstName}
+                                            style={styles.firstName}
+                                            id="firstName" onChange={(e, v) => this.handleChange(e, v)}/><br />
+                                    <TextField floatingLabelText="Фамилия"
+                                            defaultValue={this.state.employee.lastName}
+                                            style={styles.lastName}
+                                            id="lastName" onChange={(e, v) => this.handleChange(e, v)}/><br />
+                                </div>
+                                <TextField floatingLabelText="Должность"
+                                        defaultValue={this.state.employee.position}
+                                        style={styles.bigInput}
+                                        id="position" onChange={(e, v) => this.handleChange(e, v)}/><br />
+                                <TextField floatingLabelText="Телефон"
+                                        defaultValue={this.state.employee.phone}
+                                        style={styles.bigInput}
+                                        id="phone" onChange={(e, v) => this.handleChange(e, v)}/><br />
+                                <TextField floatingLabelText="Email"
+                                        defaultValue={this.state.employee.email}
+                                        style={styles.bigInput}
+                                        id="email" onChange={(e, v) => this.handleChange(e, v)}/><br />
+                                <TextField floatingLabelText="About employee"
+                                        defaultValue={this.state.employee.description}
+                                        style={styles.bigInput}
+                                        multiLine={true}
+                                        rows={2}
+                                        id="description" onChange={(e, v) => this.handleChange(e, v)}/><br />
                             </div>
-                        </Dialog>
-                    </div>
-                </section>
-            </div>
+                        </div>
+                    </Dialog>
+                </div>
+            </BaseLayout>
         );
     }
 }
@@ -284,6 +282,10 @@ const grid = css({
     ' .firstLastName': {
         display: 'flex'
     }
+});
+
+const sectionStyles = css({
+    width: '50vw'
 });
 
 export default EmployeesEditList;

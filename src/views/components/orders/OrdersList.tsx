@@ -4,6 +4,7 @@ import SideMenu from '../../partials/SideMenu';
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import Order from '../../../models/Order';
 import OrderCard from './OrderCard';
+import BaseLayout from '../../pages/BaseLayout';
 
 class OrdersList extends React.Component<any, any> {
     componentWillMount() {
@@ -19,8 +20,7 @@ class OrdersList extends React.Component<any, any> {
         let sortedOrders = [...notProcessedOrder.sort(this.orderSortRule), ...processedOrder.sort(this.orderSortRule)];
 
         return(
-            <div>
-                <SideMenu {...this.props}/>
+            <BaseLayout {...this.props}>
                 <div {...wrapper}>
                     {
                         sortedOrders.map((order: Order, ind: number) => {
@@ -28,7 +28,7 @@ class OrdersList extends React.Component<any, any> {
                         })
                     }
                 </div>
-            </div>
+            </BaseLayout>
         );
     }
 }
