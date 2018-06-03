@@ -17,7 +17,8 @@ class ServicesPage extends React.Component<any, any> {
         order: undefined,
         name: '',
         phone: '',
-        service: undefined
+        service: undefined,
+        error: ''
     };
 
     componentWillMount() {
@@ -35,21 +36,28 @@ class ServicesPage extends React.Component<any, any> {
     
     handleClose = (e) => {
         if (e.target.innerText === 'СОХРАНИТЬ') {
-            let client = this.findClient();
-            if (client) {
-                this.state.order.client_id = client.id;
-                this.addOrder();
-            } else {
-                this.props.addClient(new Client( undefined, this.state.name, Number(this.state.phone))).then(() => {
-                    let newClient = this.findClient();
-                    this.state.order.client_id = newClient.id;
-                    this.addOrder();
+            if (!this.state.phone || !this.state.name) {
+                this.setState({
+                    error: 'Заполните обязательные поля!'
                 });
+            } else {
+                let client = this.findClient();
+                if (client) {
+                    this.state.order.client_id = client.id;
+                    this.addOrder();
+                } else {
+                    this.props.addClient(new Client( undefined, this.state.name, Number(this.state.phone))).then(() => {
+                        let newClient = this.findClient();
+                        this.state.order.client_id = newClient.id;
+                        this.addOrder();
+                    });
+                }
             }
         } else {
             this.setState({
                 open: false,
-                order: undefined
+                order: undefined,
+                error: ''
             });
         }
     }
@@ -67,7 +75,7 @@ class ServicesPage extends React.Component<any, any> {
 
     findClient = () => {
         return this.props.clients.find((cl) => {
-            return cl.phone.toString() === this.state.phone;
+            return cl.phone && cl.phone.toString() === this.state.phone;
         });
     }
 
@@ -137,14 +145,15 @@ class ServicesPage extends React.Component<any, any> {
                     open={this.state.open}
                     onRequestClose={this.handleClose}
                     >
+                    <div {...errorMsg}>{this.state.error}</div>
                     <div {...dialogWrapper}>
-                        <TextField floatingLabelText="Имя"
+                        <TextField floatingLabelText="Имя (обязательно)"
                             style={stylesMaterial.bigInput}
                             id="name" 
                             onChange={(e, v) => this.handleChange(e, v)}
                         /><br />
                         +375
-                        <TextField floatingLabelText="Телефон"
+                        <TextField floatingLabelText="Телефон (обязательно)"
                             style={stylesMaterial.phoneInput}
                             id="phone" 
                             onChange={(e, v) => this.handleChange(e, v)}
@@ -193,6 +202,12 @@ const dateTime = css({
     overflow: 'hidden',
     display: 'inline-block',
     margin: '20px 20px 0px 20px'
+});
+
+const errorMsg = css({
+    color: '#B00020',
+    margin: 'auto',
+    width: '300px'
 });
 
 const styles = css({
