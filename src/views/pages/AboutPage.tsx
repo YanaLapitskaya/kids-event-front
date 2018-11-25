@@ -14,7 +14,36 @@ class AboutPage extends React.Component<any, any> {
         return (
             <BasePage>
                 <section {...commonInfoStyles}>
-                    <img src={process.env.PUBLIC_URL + '/images/children-slider.jpg'} alt="children"/>
+                    <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
+                            <div className="carousel-item active">
+                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/poster 2.jpg'} alt="First slide"/>
+                            
+                            </div>
+                            <div className="carousel-item">
+                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/poster 1.jpg'} alt="Second slide"/>
+                            
+                            </div>
+                        <a
+                            className="carousel-control-prev"
+                            href="#carouselExampleControls"
+                            role="button"
+                            data-slide="prev"
+                        >
+                            <span className="carousel-control-prev-icon" aria-hidden="true"/>
+                            <span className="sr-only">Previous</span>
+                        </a>
+                        <a
+                            className="carousel-control-next"
+                            href="#carouselExampleControls"
+                            role="button"
+                            data-slide="next"
+                        >
+                            <span className="carousel-control-next-icon" aria-hidden="true"/>
+                            <span className="sr-only">Next</span>
+                        </a>
+                    </div>
+                </section>
+                <section>
                     <div className="intro-text">
                         <img src={process.env.PUBLIC_URL + '/images/kids-event.png'} alt="kids-event"/>
                         <p>
@@ -34,19 +63,33 @@ class AboutPage extends React.Component<any, any> {
 
 const commonInfoStyles = css({
     backgroundColor: '#f2e3e8',
-    height: '100vh',
+    height: 'calc(100vh - 220px)',
     fontSize: '22px',
-    '>img': {
-        width: '60%',
-        boxShadow: '0px 0px 50px 3px #f7a3ee'
-    },
     ' img': {
         display: 'block',
-        margin: '0px auto 25px auto'
+        margin: '0px auto 0px auto',
+        maxWidth: '65%',
+        height: 'auto'
     },
     ' .intro-text': {
         display: 'flex',
         justifyContent: 'center'
+    },
+    ' .poster': {
+        borderRadius: '35px',
+    },
+    ' .carousel-control': {
+        color: '#bada55'
+    },
+    ' .carousel-control-prev-icon': {
+        backgroundImage: 'url(images/slider-left.png)',
+        width: '100px',
+        height: '100px'
+    },
+    ' .carousel-control-next-icon': {
+        backgroundImage: 'url(images/slider-right.png)',
+        width: '100px',
+        height: '100px'
     }
 });
 

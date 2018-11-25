@@ -18,7 +18,7 @@ class Header extends React.Component {
                             <img src={process.env.PUBLIC_URL + '/images/phone-icon.png'}/>(+375 29)135-7-999
                         </button>
                         <div {...socialsStyles}>
-                            <a className="inst-btn" href="https://www.instagram.com">
+                            <a className="inst-btn" href="https://www.instagram.com/kids_event.by/">
                                 <i className="fab fa-instagram"/>
                             </a>
                             <a className="vk-btn" href="https://vk.com">
@@ -60,13 +60,12 @@ class Header extends React.Component {
 
 const contactsStyles = css({
     marginLeft: '-65px',
-    '>*': {
+    ' a': {
         marginLeft: '10px',
         ':hover': {
             opacity: '0.7'
         },
-        boxSizing: 'border-box',
-        padding: '3px 0px'
+        boxSizing: 'border-box'
     },
     ' button': {
         backgroundColor: '#ff99b5',
@@ -130,7 +129,8 @@ const headerStyles = css({
         }
     },
     ' .clouds': {
-        position: 'absolute'
+        position: 'absolute',
+        zIndex: '-1'
     },
     ' .left-tree': {
         position: 'absolute'
