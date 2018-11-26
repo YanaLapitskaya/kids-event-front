@@ -13,7 +13,7 @@ class AboutPage extends React.Component<any, any> {
     render() {
         return (
             <BasePage>
-                <section {...commonInfoStyles}>
+                <section {...slider}>
                     <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
                             <div className="carousel-item active">
                                 <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/poster 2.jpg'} alt="First slide"/>
@@ -43,14 +43,15 @@ class AboutPage extends React.Component<any, any> {
                         </a>
                     </div>
                 </section>
-                <section>
+                <section {...info}>
                     <div className="intro-text">
                         <img src={process.env.PUBLIC_URL + '/images/kids-event.png'} alt="kids-event"/>
                         <p>
-                            Мы – профессиональная и креативная команда, которая любит нести детям радость и качественно
-                            выполнять свою работу. Каждый сценарий индивидуален и
-                            придумывается с учетом возраста, и темы торжества. Мы гарантируем полное соответствие
-                            образа к выбранной программе. Сомневаетесь? Проверьте сами.
+                         Если вы устали от стандартных программ, мыльных пузырей и воздушных собачек, тогда давайте знакомиться! 
+                         Очень молодое, но не очень обычное агентство организации детских праздников раскрывает для вас душу. 
+                         Пусть у нас пока мало программ, зато они нестандартные, сделаны с душой и любовью к детям. 
+                         Мы знаем, чем живут сейчас малыши, как подарить им действительно искренние эмоции, супер-настроение и отличный контент в Инстаграм, потому что мы сами не далеко ушли. 
+                         Вы спросите, почему стоит познакомиться именно с нами, а мы ответим, что просто потому, что обожаем свою работу, а значит уже почти влюблены в ваших детей. Мы большая семья kidsevent растворяемся в детстве и приглашаем вместе с нами.
                         </p>
                     </div>
                 </section>
@@ -61,7 +62,7 @@ class AboutPage extends React.Component<any, any> {
     }
 }
 
-const commonInfoStyles = css({
+const slider = css({
     backgroundColor: '#f2e3e8',
     height: 'calc(100vh - 220px)',
     fontSize: '22px',
@@ -91,6 +92,11 @@ const commonInfoStyles = css({
         width: '100px',
         height: '100px'
     }
+});
+
+const info = css({
+    backgroundColor: '#d4e8fd',
+    height: '100vh',
 });
 
 export default AboutPage;
