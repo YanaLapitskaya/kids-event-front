@@ -45,18 +45,21 @@ class AboutPage extends React.Component<any, any> {
                 </section>
                 <section {...info}>
                     <div className="intro-text">
-                        <img src={process.env.PUBLIC_URL + '/images/kids-event.png'} alt="kids-event"/>
+                        {/* <img src={process.env.PUBLIC_URL + '/images/kids-event.png'} alt="kids-event"/> */}
                         <p>
                          Если вы устали от стандартных программ, мыльных пузырей и воздушных собачек, тогда давайте знакомиться! 
-                         Очень молодое, но не очень обычное агентство организации детских праздников раскрывает для вас душу. 
-                         Пусть у нас пока мало программ, зато они нестандартные, сделаны с душой и любовью к детям. 
-                         Мы знаем, чем живут сейчас малыши, как подарить им действительно искренние эмоции, супер-настроение и отличный контент в Инстаграм, потому что мы сами не далеко ушли. 
-                         Вы спросите, почему стоит познакомиться именно с нами, а мы ответим, что просто потому, что обожаем свою работу, а значит уже почти влюблены в ваших детей. Мы большая семья kidsevent растворяемся в детстве и приглашаем вместе с нами.
+                         Очень молодое, но не очень обычное агентство организации детских праздников раскрывает для вас душу! 
+                         <br/>Вы спросите, почему стоит познакомиться именно с нами, а мы ответим, что просто потому, что обожаем свою работу, а значит уже почти влюблены в ваших детей. 
+                         Мы знаем, чем живут сейчас малыши, как подарить им действительно искренние эмоции, супер-настроение и клёвые фотографии, потому что мы сами не далеко ушли. 
+                         <br/>Мы большая семья kidsevent растворяемся в детстве и приглашаем вместе с нами!
                         </p>
+                        <div>
+                            <img src={process.env.PUBLIC_URL + '/images/lena-drawing2.jpg'} alt="lena-drawing"/>
+                        </div>
                     </div>
                 </section>
                 <EmployeesSiteList {...this.props}/>
-                <ReviewsSiteList {...this.props}/>
+                {/* <ReviewsSiteList {...this.props}/> */}
             </BasePage>
         );
     }
@@ -64,12 +67,12 @@ class AboutPage extends React.Component<any, any> {
 
 const slider = css({
     backgroundColor: '#f2e3e8',
-    height: 'calc(100vh - 220px)',
     fontSize: '22px',
+    padding: '15px 15vw',
     ' img': {
         display: 'block',
-        margin: '0px auto 0px auto',
-        maxWidth: '65%',
+        margin: '0px auto',
+        maxWidth: '60%',
         height: 'auto'
     },
     ' .intro-text': {
@@ -96,7 +99,17 @@ const slider = css({
 
 const info = css({
     backgroundColor: '#d4e8fd',
-    height: '100vh',
+    ' .intro-text p': {
+        fontFamily: '\'Bad Script\', cursive !important',
+        fontSize: '20px',
+        textAlign: 'center'
+    },
+    ' img': {
+        height: '60vh',
+        width: 'auto',
+        display: 'block',
+        margin: '0px auto'
+    }
 });
 
 export default AboutPage;

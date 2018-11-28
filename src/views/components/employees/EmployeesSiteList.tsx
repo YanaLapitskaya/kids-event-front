@@ -8,7 +8,7 @@ class EmployeesSiteList extends React.Component<any, any> {
             <section {...sectionStyles}>
                 <img src={process.env.PUBLIC_URL + '/images/employees.png'} alt="employees"/>
                 <div className="wrapper">
-                    {this.props.employees.slice(0, 4).map((empl, ind) => {
+                    {/* {this.props.employees.slice(0, 4).map((empl, ind) => {
                         return(
                             <div key={ind} className="employee">
                                 <div className="employee-photo">
@@ -21,7 +21,88 @@ class EmployeesSiteList extends React.Component<any, any> {
                                 </div>
                             </div>
                         );
-                    })}
+                    })} */}
+                    <div className="employee">
+                        <div className="employee-photo">
+                            <img alt="employee-photo" src={process.env.PUBLIC_URL + '/images/employees/Lena.jpg'}/>
+                        </div>
+                        <div className="employee-text">
+                            <h4>Елена</h4>
+                            <p>Руководитель и вдохновитель нашей команды. Любит детей даже больше, чем Лунтик.</p>
+                        </div>
+                    </div>
+                    <div className="employee">
+                        <div className="employee-photo">
+                            <img alt="employee-photo" src={process.env.PUBLIC_URL + '/images/employees/Evgenia.jpg'}/>
+                        </div>
+                        <div className="employee-text">
+                            <h4>Евгения</h4>
+                            <p>Креатив нашей команды. Мы до сих пор не знаем, как зовут ее музу, но, уверены, что она потрясающая, судя по ее творчеству.</p>
+                        </div>
+                    </div>
+                    <div className="employee">
+                        <div className="employee-photo">
+                            <img alt="employee-photo" src={process.env.PUBLIC_URL + '/images/employees/Stas.jpg'}/>
+                        </div>
+                        <div className="employee-text">
+                            <h4>Станислав</h4>
+                            <p>Аниматор нашего творческого коллектива. Дети любят его, кажется, за доброту, но мы уверены, что ещё и за улыбку, без которой он не бывает.</p>
+                        </div>
+                    </div>
+                    <div className="employee">
+                        <div className="employee-photo">
+                            <img alt="employee-photo" src={process.env.PUBLIC_URL + '/images/employees/Evgeny.jpg'}/>
+                        </div>
+                        <div className="employee-text">
+                            <h4>Евгений</h4>
+                            <p>Мозг нашей команды. Подсчитывает учеты, руководит бумагами и придает всем уверенности, поддерживает и наставляет.</p>
+                        </div>
+                    </div>
+                    <div className="employee">
+                        <div className="employee-photo">
+                            <img alt="employee-photo" src={process.env.PUBLIC_URL + '/images/employees/yana.png'}/>
+                        </div>
+                        <div className="employee-text">
+                            <h4>Яна</h4>
+                            <p>Создатель матричной красоты. Без нее, команда была бы менее душевная.</p>
+                        </div>
+                    </div>
+                    <div className="employee">
+                        <div className="employee-photo">
+                            <img alt="employee-photo" src={process.env.PUBLIC_URL + '/images/employees/Svetlana.jpg'}/>
+                        </div>
+                        <div className="employee-text">
+                            <h4>Светлана</h4>
+                            <p>Голос нашей команды. В карооке она пересекает даже компьютер.</p>
+                        </div>
+                    </div>
+                    <div className="employee">
+                        <div className="employee-photo">
+                            <img alt="employee-photo" src={process.env.PUBLIC_URL + '/images/employees/Nastya.jpg'}/>
+                        </div>
+                        <div className="employee-text">
+                            <h4>Настя</h4>
+                            <p>Скромность и доброта ее украшение с детства. Но это не мешает ей перевоплощаться и доставлять удовольствие детишкам.</p>
+                        </div>
+                    </div>
+                    <div className="employee">
+                        <div className="employee-photo">
+                            <img alt="employee-photo" src={process.env.PUBLIC_URL + '/images/employees/Lyba.jpg'}/>
+                        </div>
+                        <div className="employee-text">
+                            <h4>Люба</h4>
+                            <p>Здравый смысл нашей команды. Менеджер с большой буквы, который держит все и всех под контролем.</p>
+                        </div>
+                    </div>
+                    <div className="employee">
+                        <div className="employee-photo">
+                            <img alt="employee-photo" src={process.env.PUBLIC_URL + '/images/employees/Sasha.jpg'}/>
+                        </div>
+                        <div className="employee-text">
+                            <h4>Саша</h4>
+                            <p>Аниматор нашей семьи, которая всегда в надежде, что именинник угостит ее тортом или пиццей.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
         );
@@ -30,10 +111,10 @@ class EmployeesSiteList extends React.Component<any, any> {
 
 const sectionStyles = css({
     backgroundColor: '#dac0f0',
-    height: '100vh',
     ' .wrapper': {
         display: 'flex',
         justifyContent: 'center',
+        flexWrap: 'wrap',
         textAlign: 'center',
         marginTop: '-40px'
     },
