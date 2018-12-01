@@ -37,7 +37,7 @@ class EmployeesSiteList extends React.Component<any, any> {
                         </div>
                         <div className="employee-text">
                             <h4>Евгения</h4>
-                            <p>Креатив нашей команды. Мы до сих пор не знаем, как зовут ее музу, но, уверены, что она потрясающая, судя по ее творчеству.</p>
+                            <p>Креатив нашей команды. Вдохновение черпает из каждого мгновения своей жизни.</p>
                         </div>
                     </div>
                     <div className="employee">
@@ -73,7 +73,7 @@ class EmployeesSiteList extends React.Component<any, any> {
                         </div>
                         <div className="employee-text">
                             <h4>Светлана</h4>
-                            <p>Голос нашей команды. В карооке она пересекает даже компьютер.</p>
+                            <p>Голос нашей команды. В караоке она перепевает даже компьютер.</p>
                         </div>
                     </div>
                     <div className="employee">
@@ -82,7 +82,7 @@ class EmployeesSiteList extends React.Component<any, any> {
                         </div>
                         <div className="employee-text">
                             <h4>Настя</h4>
-                            <p>Скромность и доброта ее украшение с детства. Но это не мешает ей перевоплощаться и доставлять удовольствие детишкам.</p>
+                            <p>Скромность ее украшение с детства. Но это не мешает ей перевоплощаться и доставлять удовольствие детишкам.</p>
                         </div>
                     </div>
                     <div className="employee">

@@ -1,9 +1,60 @@
 import * as React from 'react';
 import { css } from 'glamor';
 import { NavLink } from 'react-router-dom';
+import Dialog from 'material-ui/Dialog';
+import TextField from 'material-ui/TextField';
+import FlatButton from 'material-ui/FlatButton';
 
-class Header extends React.Component {
+class Header extends React.Component<any, any> {
+    state = {
+        open: false,
+        phone: '',
+        error: ''
+    };
+
+    handleClick(e: any) {
+        this.setState({
+            open: true,
+            phone: ''
+        });
+    }
+
+    handleChange(e: any, v: any) {
+        this.state.phone = v;
+    }
+
+    handleClose = (e: any) => {
+        if (e.target.innerText === 'Отправить') {
+            if (!this.state.phone) {
+                this.setState({
+                    error: 'Заполните обязательные поля!'
+                });
+            } else {
+                this.props.addOrder(this.state.phone);
+            }
+        } else {
+            this.setState({
+                open: false,
+                error: ''
+            });
+        }
+    }
+
     render() {
+        const actions = [
+            <FlatButton
+                label="Отменить"
+                key="cancel"
+                secondary={true}
+                onClick={(e) => this.handleClose(e)}
+            />,
+            <FlatButton
+                label="Отправить"
+                key="ok"
+                primary={true}
+                onClick={(e) => this.handleClose(e)}
+            />
+        ];
         return (
             <header {...headerStyles}>
                 <img className="clouds" src={process.env.PUBLIC_URL + '/images/clouds.svg'}/>
@@ -14,16 +65,16 @@ class Header extends React.Component {
                         <img src={process.env.PUBLIC_URL + '/images/logo.png'} alt="logo" height="180px" width="300px"/>
                     </div>
                     <div {...contactsStyles}>
-                        <button>
+                        <button onClick={(e) => this.handleClick(e)}>
                             <img src={process.env.PUBLIC_URL + '/images/phone-icon.png'}/>(+375 29)135-7-999
                         </button>
                         <div {...socialsStyles}>
                             <a className="inst-btn" href="https://www.instagram.com/kids_event.by/">
                                 <i className="fab fa-instagram"/>
                             </a>
-                            <a className="vk-btn" href="https://vk.com">
+                            {/* <a className="vk-btn" href="https://vk.com">
                                 <i className="fab fa-vk"/>
-                            </a>
+                            </a> */}
                         </div>
                     </div>
                 </div>
@@ -34,25 +85,43 @@ class Header extends React.Component {
                             <div>О нас</div>
                         </div>
                     </NavLink>
-                    <a href="" className="gallery-button">
+                    <NavLink to={'/gallery'} className="gallery-button">
                         <div className="cloud-wrapper">
                             <img src={process.env.PUBLIC_URL + '/images/menu-photo.svg'}/>
                             <div>Фото</div>
                         </div>
-                    </a>
+                    </NavLink>
                     <NavLink to={'/services'} className="services-button">
                         <div className="cloud-wrapper">
                             <img src={process.env.PUBLIC_URL + '/images/menu-services.svg'}/>
                             <div>Услуги</div>
                         </div>
                     </NavLink>
-                    <a href="" className="charity-button">
+                    <NavLink to={'/charity'} className="charity-button">
                         <div className="cloud-wrapper">
                             <img src={process.env.PUBLIC_URL + '/images/menu-charity.svg'}/>
                             <div>Благотворительность</div>
                         </div>
-                    </a>
+                    </NavLink>
                 </nav>
+                <Dialog
+                    title="Заказать звонок"
+                    titleStyle={{textAlign: 'center'}}
+                    actions={actions}
+                    modal={false}
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                    >
+                    <div {...errorMsg}>{this.state.error}</div>
+                    <div {...dialogWrapper}>
+                        +375
+                        <TextField floatingLabelText="Телефон "
+                            style={stylesMaterial.phoneInput}
+                            id="phone" 
+                            onChange={(e, v) => this.handleChange(e, v)}
+                        /><br />
+                    </div>
+                </Dialog>
             </header>
         );
     }
@@ -60,6 +129,7 @@ class Header extends React.Component {
 
 const contactsStyles = css({
     marginLeft: '-65px',
+    zIndex: '1',
     ' a': {
         marginLeft: '10px',
         ':hover': {
@@ -110,6 +180,16 @@ const socialsStyles = css({
     }
 });
 
+const stylesMaterial = {
+    bigInput: {
+        width: '400px'
+    },
+    phoneInput: {
+        width: '350px',
+        marginLeft: '10px'
+    }
+};
+
 const headerStyles = css({
     backgroundColor: '#acd7b9',
     backgroundImage: 'url("./../images/circle.png")',
@@ -130,7 +210,7 @@ const headerStyles = css({
     },
     ' .clouds': {
         position: 'absolute',
-        zIndex: '-1'
+        zIndex: '0'
     },
     ' .left-tree': {
         position: 'absolute'
@@ -191,6 +271,17 @@ const navStyles = css({
         width: '210px',
         height: '60px'
     }
+});
+
+const dialogWrapper = css({
+    margin: 'auto',
+    width: '400px'
+});
+
+const errorMsg = css({
+    color: '#B00020',
+    margin: 'auto',
+    width: '300px'
 });
 
 export default Header;

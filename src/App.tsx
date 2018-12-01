@@ -20,6 +20,8 @@ import { actionFetchOrders, actionEditOrder, actionAddOrder } from './redux/acti
 import LoginPage from './views/pages/LoginPage';
 import { actionLogin } from './redux/actions/UserActions';
 import { HOST } from './Constants';
+import CharityPage from './views/pages/CharityPage';
+import GalleryPage from './views/pages/GalleryPage';
 
 const Login: React.SFC<void> = () => {
     window.location.replace(`${HOST}/login`);
@@ -41,6 +43,16 @@ class App extends React.Component {
                         exact={true}
                         path="/services"
                         render={() => <ServicesPage {...this.props}/>}
+                    />
+                    <Route
+                        exact={true}
+                        path="/charity"
+                        render={() => <CharityPage {...this.props}/>}
+                    />
+                    <Route
+                        exact={true}
+                        path="/gallery"
+                        render={() => <GalleryPage  {...this.props}/>}
                     />
                     <Route path="/login" component={Login}/>
                     <Route

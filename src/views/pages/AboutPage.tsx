@@ -12,7 +12,7 @@ class AboutPage extends React.Component<any, any> {
 
     render() {
         return (
-            <BasePage>
+            <BasePage {...this.props}>
                 <section {...slider}>
                     <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
                             <div className="carousel-item active">
@@ -54,7 +54,7 @@ class AboutPage extends React.Component<any, any> {
                          <br/>Мы большая семья kidsevent растворяемся в детстве и приглашаем вместе с нами!
                         </p>
                         <div>
-                            <img src={process.env.PUBLIC_URL + '/images/lena-drawing2.jpg'} alt="lena-drawing"/>
+                            <img src={process.env.PUBLIC_URL + '/images/lena-drawing.jpg'} alt="lena-drawing"/>
                         </div>
                     </div>
                 </section>

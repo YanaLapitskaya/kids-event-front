@@ -21,7 +21,7 @@
   
   .hovereffect:hover .overlay {
     background-color: rgba(255,255,255,0.7);
-    padding: 80px 50px;
+    padding: 15px 25px;
   }
 
   .hovereffect:hover .overlay div{
