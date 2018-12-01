@@ -149,13 +149,13 @@ class ServicesPage extends React.Component<any, any> {
                                     Но в благодарность за отвагу и стремления все получат классные подарки и научатся делать настоящее морожко. 
                                     Можем приехать на ваш день рождения с чудесной сказкой ☺ Но, это уже другая история...
                                 </div>
-                                <RaisedButton 
+                                {/* <RaisedButton 
                                     className="hidden"
                                     {...orderBtn}
                                     onClick={() => this.handleOpen('Спасем Эльзу')}
                                 >
                                     Заказать
-                                </RaisedButton>
+                                </RaisedButton> */}
                             </div>
                         </div>
                     </div>
@@ -171,13 +171,13 @@ class ServicesPage extends React.Component<any, any> {
                                     Волшебством будет пропитан весь праздник. Необычные игры и секретные испытания должны удивить не только детей, 
                                     но и всех гостей. Всем захочется прокатиться на радуге, прикоснуться к Вошебству и зарядиться эмоциями радости и счастья.
                                 </div>
-                                <RaisedButton 
+                                {/* <RaisedButton 
                                     className="hidden"
                                     {...orderBtn}
                                     onClick={() => this.handleOpen('Литл поняшки')}
                                 >
                                     Заказать
-                                </RaisedButton>
+                                </RaisedButton> */}
                             </div>
                         </div>
                     </div>
@@ -194,13 +194,13 @@ class ServicesPage extends React.Component<any, any> {
                                     Караоке и танцы - будут, гадать научимся, подарочные дневники с пони заведем, мастерство причёсок и мейка освоим. 
                                     А главное, посвящение принцесс в королев сна!
                                 </div>
-                                <RaisedButton 
+                                {/* <RaisedButton 
                                     className="hidden"
                                     {...orderBtn}
                                     onClick={() => this.handleOpen('Пижамная вечеринка')}
                                 >
                                     Заказать
-                                </RaisedButton>
+                                </RaisedButton> */}
                             </div>
                         </div>
                     </div>
