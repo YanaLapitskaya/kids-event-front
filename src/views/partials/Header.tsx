@@ -66,7 +66,7 @@ class Header extends React.Component<any, any> {
                     </div>
                     <div {...contactsStyles}>
                         <button 
-                            {/*onClick={(e) => this.handleClick(e)*/}
+                            // onClick={(e) => this.handleClick(e)}
                         >
                             <img src={process.env.PUBLIC_URL + '/images/phone-icon.png'}/>(+375 29)135-7-999
                         </button>
