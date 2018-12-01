@@ -60,7 +60,7 @@ class EmployeesSiteList extends React.Component<any, any> {
                     </div>
                     <div className="employee">
                         <div className="employee-photo">
-                            <img alt="employee-photo" src={process.env.PUBLIC_URL + '/images/employees/yana.png'}/>
+                            <img alt="employee-photo" src={process.env.PUBLIC_URL + '/images/employees/Yana.png'}/>
                         </div>
                         <div className="employee-text">
                             <h4>Яна</h4>
