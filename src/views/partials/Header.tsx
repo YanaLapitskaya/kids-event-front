@@ -60,7 +60,7 @@ class Header extends React.Component<any, any> {
                 <img className="clouds" src={process.env.PUBLIC_URL + '/images/clouds.svg'}/>
                 {/*<img className="left-tree" src={process.env.PUBLIC_URL + '/images/left-tree.svg'}/>*/}
                 <div>
-                    <img src={process.env.PUBLIC_URL + '/images/slogan.png'} alt="slogan"/>
+                    <img className="slogan" src={process.env.PUBLIC_URL + '/images/slogan.png'} alt="slogan"/>
                     <div id="logo">
                         <img src={process.env.PUBLIC_URL + '/images/logo.png'} alt="logo" height="180px" width="300px"/>
                     </div>
@@ -144,6 +144,9 @@ const contactsStyles = css({
         color: '#fff',
         fontFamily: '\'El Messiri\', sans-serif',
         fontSize: '1.3rem',
+        '@media only screen and (max-width: 700px)': {
+            fontSize: '1em'
+        },
         border: 'none',
         boxShadow: '0px 3px 10px rgba(0,0,0,.25)',
         borderRadius: '20px',
@@ -219,7 +222,10 @@ const headerStyles = css({
     },
     ' .slogan': {
         fontSize: '35px',
-        fontWeight: '900'
+        fontWeight: '900',
+        '@media only screen and (max-width: 700px)': {
+            display: 'none'
+        }
     }
 });
 
@@ -231,6 +237,12 @@ const navStyles = css({
     fontWeight: '900',
     textAlign: 'center',
     marginTop: '-60px',
+    '@media only screen and (max-width: 700px)': {
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        marginTop: '-35px'
+    },
     ' a': {
         color: '#1c5791',
         textDecoration: 'none',

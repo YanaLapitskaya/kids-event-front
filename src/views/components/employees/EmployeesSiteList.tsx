@@ -144,7 +144,28 @@ const sectionStyles = css({
         flexDirection: 'column',
         alignItems: 'center',
         width: '30%'
-    }
+    },
+    '@media only screen and (max-width: 700px)': {
+        ' .wrapper': {
+            width: 'auto'
+        },
+        ' .employee-photo': {
+            width: '225px',
+            height: '225px',
+            ' img': {
+                width: '150px',
+                height: '150px',
+            }
+        },
+        ' .employee': {
+            width: 'auto'
+        },
+        ' .employee-text': {
+            padding: '0px 20px'
+        },
+        fontSize: '1em',
+        padding: '10px'
+    },
 });
 
 export default EmployeesSiteList;

@@ -69,6 +69,18 @@ const slider = css({
     backgroundColor: '#f2e3e8',
     fontSize: '22px',
     padding: '15px 15vw',
+    '@media only screen and (max-width: 700px)': {
+        ' img': {
+            maxWidth: '100%',
+            padding: '0px'
+        },
+        ' .carousel-control-next-icon': {
+            marginLeft: '-20vw'
+        },
+        ' .carousel-control-prev-icon': {
+            marginRight: '-20vw'
+        }
+    },
     ' img': {
         display: 'block',
         margin: '0px auto',
@@ -99,6 +111,15 @@ const slider = css({
 
 const info = css({
     backgroundColor: '#d4e8fd',
+    '@media only screen and (max-width: 700px)': {
+        ' .intro-text p': {
+            fontSize: '1em'
+        },
+        ' img': {
+            width: '100%',
+            height: 'auto'
+        }
+    },
     ' .intro-text p': {
         fontFamily: '\'Bad Script\', cursive !important',
         fontSize: '20px',
