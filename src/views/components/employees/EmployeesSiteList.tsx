@@ -33,6 +33,15 @@ class EmployeesSiteList extends React.Component<any, any> {
                     </div>
                     <div className="employee">
                         <div className="employee-photo">
+                            <img alt="employee-photo" src={process.env.PUBLIC_URL + '/images/employees/Anna.jpg'}/>
+                        </div>
+                        <div className="employee-text">
+                            <h4>Аня</h4>
+                            <p>Юрист нашей семьи. Огромная ответственность на хрупких плечах, за которыми мы стоим и которыми гордимся.</p>
+                        </div>
+                    </div>
+                    <div className="employee">
+                        <div className="employee-photo">
                             <img alt="employee-photo" src={process.env.PUBLIC_URL + '/images/employees/Evgenia.jpg'}/>
                         </div>
                         <div className="employee-text">
@@ -92,15 +101,6 @@ class EmployeesSiteList extends React.Component<any, any> {
                         <div className="employee-text">
                             <h4>Люба</h4>
                             <p>Здравый смысл нашей команды. Менеджер с большой буквы, который держит все и всех под контролем.</p>
-                        </div>
-                    </div>
-                    <div className="employee">
-                        <div className="employee-photo">
-                            <img alt="employee-photo" src={process.env.PUBLIC_URL + '/images/employees/Sasha.jpg'}/>
-                        </div>
-                        <div className="employee-text">
-                            <h4>Саша</h4>
-                            <p>Аниматор нашей семьи, которая всегда в надежде, что именинник угостит ее тортом или пиццей.</p>
                         </div>
                     </div>
                 </div>
