@@ -62,7 +62,7 @@ class Header extends React.Component<any, any> {
                 <div>
                     <img className="slogan" src={process.env.PUBLIC_URL + '/images/slogan.png'} alt="slogan"/>
                     <div id="logo">
-                        <img src={process.env.PUBLIC_URL + '/images/logo.png'} alt="logo" height="180px" width="300px"/>
+                        <img src={process.env.PUBLIC_URL + '/images/logo1.png'} alt="logo" height="180px" width="230px"/>
                     </div>
                     <div {...contactsStyles}>
                         <button 
@@ -130,8 +130,13 @@ class Header extends React.Component<any, any> {
 }
 
 const contactsStyles = css({
-    marginLeft: '-65px',
+    marginLeft: '-10px',
     zIndex: '1',
+    '@media only screen and (max-width: 700px)': {
+        display: 'flex',
+        flexDirection: 'row',
+        margin: 'auto'
+    },
     ' a': {
         marginLeft: '10px',
         ':hover': {
@@ -201,6 +206,11 @@ const headerStyles = css({
     backgroundRepeat: 'repeat',
     backgroundPosition: 'center',
     fontFamily: 'PFKidsPro, sans-serif',
+    '@media only screen and (max-width: 700px)': {
+        '>div': {
+            flexDirection: 'column'
+        }
+    },
     '>div': {
         display: 'flex',
         flexColumns: '1fr 1fr 1fr',
@@ -241,7 +251,7 @@ const navStyles = css({
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
-        marginTop: '-35px'
+        marginTop: '0px'
     },
     ' a': {
         color: '#1c5791',
