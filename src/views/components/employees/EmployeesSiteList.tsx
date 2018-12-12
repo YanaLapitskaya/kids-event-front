@@ -111,6 +111,7 @@ class EmployeesSiteList extends React.Component<any, any> {
 
 const sectionStyles = css({
     backgroundColor: '#dac0f0',
+
     ' .wrapper': {
         display: 'flex',
         justifyContent: 'center',
@@ -164,7 +165,12 @@ const sectionStyles = css({
             padding: '0px 20px'
         },
         fontSize: '1em',
-        padding: '10px'
+        padding: '10px',
+        '>img': {
+            width: '300px',
+            display: 'block',
+            margin: '20px auto'
+        }
     },
 });
 

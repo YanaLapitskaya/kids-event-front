@@ -17,7 +17,7 @@ class Footer extends React.Component {
                         Услуги
                     </NavLink>
                     <NavLink to={'/charity'}>
-                        Благотворительность
+                        Благотворительность 
                     </NavLink>
                 </div>
                 <div {...contactsStyles}>
@@ -46,6 +46,14 @@ const styles = css({
     },
     ' a': {
         color: '#000',
+    },
+    '@media only screen and (max-width: 700px)': {
+        ' a': {
+            fontSize: '0.8rem'
+        },
+        ' .menu': {
+            justifyContent: 'center'
+        }
     }
 });
 
