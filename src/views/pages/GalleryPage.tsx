@@ -8,7 +8,7 @@ class GalleryPage extends React.Component<any, any> {
     componentDidMount() {
         for (let i = 1; i < 35; i++ ) {
             this.files.push({
-                original: process.env.PUBLIC_URL + `/images/02Febrary/${i}.jpg`,
+                original: process.env.PUBLIC_URL + `/images/02Febrary/${i}-min.jpg`,
                 thumbnail: process.env.PUBLIC_URL + `/images/02Febrary/${i}_tn.jpg`
             });
         }
