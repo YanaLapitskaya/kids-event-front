@@ -16,12 +16,32 @@ class AboutPage extends React.Component<any, any> {
                 <section {...slider}>
                     <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
                             <div className="carousel-item active">
-                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/poster 2.jpg'} alt="First slide"/>
+                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/poster 1.jpg'} alt="First slide"/>
                             
                             </div>
                             <div className="carousel-item">
-                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/poster 1.jpg'} alt="Second slide"/>
-                            
+                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/poster 2.jpg'} alt="Third slide"/>
+
+                            </div>
+                            <div className="carousel-item">
+                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/poster 3.jpg'} alt="Third slide"/>
+
+                            </div>
+                            <div className="carousel-item">
+                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/poster 4.jpg'} alt="Third slide"/>
+
+                            </div>
+                            <div className="carousel-item">
+                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/poster 5.jpg'} alt="Third slide"/>
+
+                            </div>
+                            <div className="carousel-item">
+                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/poster 6.jpg'} alt="Third slide"/>
+
+                            </div>
+                            <div className="carousel-item">
+                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/poster 7.jpg'} alt="Third slide"/>
+
                             </div>
                         <a
                             className="carousel-control-prev"
