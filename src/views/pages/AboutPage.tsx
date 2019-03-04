@@ -16,31 +16,31 @@ class AboutPage extends React.Component<any, any> {
                 <section {...slider}>
                     <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
                             <div className="carousel-item active">
-                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/poster 1.jpg'} alt="First slide"/>
+                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/slider_image_1.jpg'} alt="First slide"/>
                             
                             </div>
                             <div className="carousel-item">
-                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/poster 2.jpg'} alt="Third slide"/>
+                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/slider_image_2.jpg'} alt="Second slide"/>
 
                             </div>
                             <div className="carousel-item">
-                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/poster 3.jpg'} alt="Third slide"/>
+                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/slider_image_3.jpg'} alt="Third slide"/>
 
                             </div>
                             <div className="carousel-item">
-                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/poster 4.jpg'} alt="Third slide"/>
+                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/slider_image_4.jpg'} alt="Fourth slide"/>
 
                             </div>
                             <div className="carousel-item">
-                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/poster 5.jpg'} alt="Third slide"/>
+                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/slider_image_5.jpg'} alt="Fifth slide"/>
 
                             </div>
                             <div className="carousel-item">
-                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/poster 6.jpg'} alt="Third slide"/>
+                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/slider_image_6.jpg'} alt="Sixth slide"/>
 
                             </div>
                             <div className="carousel-item">
-                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/poster 7.jpg'} alt="Third slide"/>
+                                <img className="poster d-block" src={process.env.PUBLIC_URL + '/images/slider_image_7.jpg'} alt="Seventh slide"/>
 
                             </div>
                         <a
