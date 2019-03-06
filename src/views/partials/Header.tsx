@@ -243,7 +243,7 @@ const navStyles = css({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    fontSize: '20px',
+    fontSize: '24px',
     fontWeight: '900',
     textAlign: 'center',
     marginTop: '-60px',
@@ -292,8 +292,8 @@ const navStyles = css({
     },
 
     ' .charity-button': {
-        width: '210px',
-        height: '60px'
+        width: '240px',
+        height: '70px'
     }
 });
 

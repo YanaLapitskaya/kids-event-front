@@ -36,8 +36,8 @@ class EmployeesSiteList extends React.Component<any, any> {
                             <img alt="employee-photo" src={process.env.PUBLIC_URL + '/images/employees/Anna.jpg'}/>
                         </div>
                         <div className="employee-text">
-                            <h4>Аня</h4>
-                            <p>Юрист нашей семьи. Огромная ответственность на хрупких плечах, за которыми мы стоим и которыми гордимся.</p>
+                            <h4>Анна</h4>
+                            <p>Аниматор семейства праздников, который обожает общесвто самых маленьких деток.</p>
                         </div>
                     </div>
                     <div className="employee">
@@ -73,7 +73,7 @@ class EmployeesSiteList extends React.Component<any, any> {
                         </div>
                         <div className="employee-text">
                             <h4>Яна</h4>
-                            <p>Создатель матричной красоты. Без нее, команда была бы менее душевная.</p>
+                            <p>Яна - самый доброжелательный аниматор в истории существования планет. Любит людей, обожает детей, ярко светит - наш самый яркий лучик!</p>
                         </div>
                     </div>
                     <div className="employee">
@@ -82,18 +82,10 @@ class EmployeesSiteList extends React.Component<any, any> {
                         </div>
                         <div className="employee-text">
                             <h4>Светлана</h4>
-                            <p>Голос нашей команды. В караоке она перепевает даже компьютер.</p>
+                            <p>Светлана - аниматор и голос нашей команды, может посоревноваться с Лободой и Монатиком</p>
                         </div>
                     </div>
-                    <div className="employee">
-                        <div className="employee-photo">
-                            <img alt="employee-photo" src={process.env.PUBLIC_URL + '/images/employees/Nastya.jpg'}/>
-                        </div>
-                        <div className="employee-text">
-                            <h4>Настя</h4>
-                            <p>Скромность ее украшение с детства. Но это не мешает ей перевоплощаться и доставлять удовольствие детишкам.</p>
-                        </div>
-                    </div>
+                    
                     <div className="employee">
                         <div className="employee-photo">
                             <img alt="employee-photo" src={process.env.PUBLIC_URL + '/images/employees/Lyba.jpg'}/>
