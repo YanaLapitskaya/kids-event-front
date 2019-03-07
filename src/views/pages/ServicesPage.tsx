@@ -311,6 +311,7 @@ const styles = css({
     backgroundColor: '#dbc0f2',
     padding: '10px 0px',
     display: 'flex',
+    flexWrap: 'wrap',
     justifyContent: 'space-around',
     '@media only screen and (max-width: 700px)': {
         flexDirection: 'column',
