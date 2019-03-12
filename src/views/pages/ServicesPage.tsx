@@ -233,6 +233,121 @@ class ServicesPage extends React.Component<any, any> {
                             </div>
                         </div>
                     </div>
+
+                    <div className="service">
+                        <div className="hovereffect">
+                            <img className="img-responsive" src={process.env.PUBLIC_URL + '/images/services_6.jpg'} alt="pony"/>
+                            <div className="overlay">
+                                <h2>Квест морских глубин от Ариэль и Тритона</h2>
+                                <div className="hidden text">
+                                Ариэль хочет показать ребятам все владения Атлантики, где она росла и где живут ее друзья, а главное, 
+                                найти сокровища, ведь путь к ним откроется только имениннице. 
+                                Ребят ждут испытания! Необходимо будет противостоять осьминогу, победить мурен и справиться с трудностями на 
+                                морском пути. Также, необходимо будет разгадать множество загадок, освоить несколько тайн и научиться волшебству. 
+                                Помогать на трудном пути будет отец Ариэль - Тритон!<br/>
+                                    <p className="price">Цена: 75 бел. р.</p>
+                                </div>
+                                {/* <RaisedButton 
+                                    className="hidden"
+                                    {...orderBtn}
+                                    onClick={() => this.handleOpen('Пижамная вечеринка')}
+                                >
+                                    Заказать
+                                </RaisedButton> */}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="service">
+                        <div className="hovereffect">
+                            <img className="img-responsive" src={process.env.PUBLIC_URL + '/images/services_5.jpg'} alt="pony"/>
+                            <div className="overlay">
+                                <h2>Квест от принцессы Авалора</h2>
+                                <div className="hidden text">
+                                Шерика украла амулет, заточила наш праздник в него и спрятала где-то, нам необходимо его все-таки найти,
+                                 чтобы праздник состоялся. Источник звериной мудрости – Сьюзо, подсунул первую подсказку, по которой нужно отправиться 
+                                 на поиски амулета. Друзья и советники Елены будут всячески помогать ей на протяжении поисков.<br/>
+                                    <p className="price">Цена: 75 бел. р.</p>
+                                </div>
+                                {/* <RaisedButton 
+                                    className="hidden"
+                                    {...orderBtn}
+                                    onClick={() => this.handleOpen('Пижамная вечеринка')}
+                                >
+                                    Заказать
+                                </RaisedButton> */}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="service">
+                        <div className="hovereffect">
+                            <img className="img-responsive" src={process.env.PUBLIC_URL + '/images/services_7.jpeg'} alt="pony"/>
+                            <div className="overlay">
+                                <h2>Серебряное шоу</h2>
+                                <div className="hidden text">
+                                Хочется безумства? Самая энергичная и модная дискотека-шоу для вас и ваших детей! 
+                                Пустите на свой праздник немного куража и безудержного веселья. Море серебра, в котором будут утопать ваши гости, 
+                                зажигательная музыка и флешмоб для всех гостей от наших артистов сделают ваш праздник особенным.<br/>
+                                    <p className="price">Цена: 75 бел. р.</p>
+                                </div>
+                                {/* <RaisedButton 
+                                    className="hidden"
+                                    {...orderBtn}
+                                    onClick={() => this.handleOpen('Пижамная вечеринка')}
+                                >
+                                    Заказать
+                                </RaisedButton> */}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="service">
+                        <div className="hovereffect">
+                            <img className="img-responsive" src={process.env.PUBLIC_URL + '/images/services_8.jpg'} alt="pony"/>
+                            <div className="overlay">
+                                <h2>Квест от Леди Баг</h2>
+                                <div className="hidden text">
+                                ло порабатило праздник, но Леди Баг и Супер кот спешат на помощь! 
+                                У ребят будет ровно 100 минут, Чтобы догадаться с помощью подсказок и испытаний, как его вернуть! 
+                                Супер Кот и Леди Баг будут проверять ребят на эрудицию, выносливость и бесстрашие! А Маленькие Тикки будут рады всем помочь!
+                                Веселые игры и испытания будут сопровождать квест. 
+                                В конце, ребята с помощью персонажей смогут вернуть праздник1 И избавиться от зла!<br/>
+                                    <p className="price">Цена: 75 бел. р.</p>
+                                </div>
+                                {/* <RaisedButton 
+                                    className="hidden"
+                                    {...orderBtn}
+                                    onClick={() => this.handleOpen('Пижамная вечеринка')}
+                                >
+                                    Заказать
+                                </RaisedButton> */}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="service">
+                        <div className="hovereffect">
+                            <img className="img-responsive" src={process.env.PUBLIC_URL + '/images/services_9.jpg'} alt="pony"/>
+                            <div className="overlay">
+                                <h2>Квест от черепашек ниндзя</h2>
+                                <div className="hidden text">
+                                Шредер хочет захватить землю и всеми силами помешать праздновать день рождение! И поэтому, чтобы спасти праздник и всю вселенную,
+                                 Сплинтер отправляет к ребятам на помощь Черепаху ниндзя с подругой Эйприл! А все ребята должны ему помочь! 
+                                 На пути будут встречаться множество трудностей и приключений, а также, забавные конкурсы от черепахи и его подруги!<br/>
+                                    <p className="price">Цена: 75 бел. р.</p>
+                                </div>
+                                {/* <RaisedButton 
+                                    className="hidden"
+                                    {...orderBtn}
+                                    onClick={() => this.handleOpen('Пижамная вечеринка')}
+                                >
+                                    Заказать
+                                </RaisedButton> */}
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <Dialog
                     title="Оформление заказа"

@@ -28,7 +28,7 @@ class EmployeesSiteList extends React.Component<any, any> {
                         </div>
                         <div className="employee-text">
                             <h4>Елена</h4>
-                            <p>Руководитель и вдохновитель нашей команды. Любит детей даже больше, чем Лунтик.</p>
+                            <p>Елена, руководитель нашей команды, любит детей даже больше, чем шоколад, котиков и выходные.</p>
                         </div>
                     </div>
                     <div className="employee">
@@ -73,7 +73,7 @@ class EmployeesSiteList extends React.Component<any, any> {
                         </div>
                         <div className="employee-text">
                             <h4>Яна</h4>
-                            <p>Яна - самый доброжелательный аниматор в истории существования планет. Любит людей, обожает детей, ярко светит - наш самый яркий лучик!</p>
+                            <p>Самый доброжелательный аниматор в истории существования планет. Любит людей, обожает детей, ярко светит - наш самый яркий лучик!</p>
                         </div>
                     </div>
                     <div className="employee">
@@ -82,7 +82,7 @@ class EmployeesSiteList extends React.Component<any, any> {
                         </div>
                         <div className="employee-text">
                             <h4>Светлана</h4>
-                            <p>Светлана - аниматор и голос нашей команды, может посоревноваться с Лободой и Монатиком</p>
+                            <p>Аниматор и голос нашей команды, может посоревноваться с Лободой и Монатиком</p>
                         </div>
                     </div>
                     
@@ -93,6 +93,16 @@ class EmployeesSiteList extends React.Component<any, any> {
                         <div className="employee-text">
                             <h4>Люба</h4>
                             <p>Здравый смысл нашей команды. Менеджер с большой буквы, который держит все и всех под контролем.</p>
+                        </div>
+                    </div>
+
+                    <div className="employee">
+                        <div className="employee-photo">
+                            <img alt="employee-photo" src={process.env.PUBLIC_URL + '/images/employees/vova_avatar.jpg'}/>
+                        </div>
+                        <div className="employee-text">
+                            <h4>Вова</h4>
+                            <p>Талант и искренность, юмор и энергичность, это все про нашего самого веселого аниматора! Обладает даром влюблять в себя всех с первого взгляда!</p>
                         </div>
                     </div>
                 </div>
